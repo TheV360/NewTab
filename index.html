@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>New Tab</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<style type="text/css">
+			* {
+				margin: 0;
+				border: 0;
+				padding: 0;
+				
+				box-sizing: border-box;
+				cursor: default;
+				
+				font-family: "Lato", sans-serif;
+				
+				z-index: 4;
+			}
+			
+			::-moz-selection {
+				color: #ffffff;
+				background-color: #000000;
+			}
+			
+			::selection {
+				color: #ffffff;
+				background-color: #000000;
+			}
+			
+			html {
+				background-color: #0f0f0f;
+			}
+			
+			html, body, .center {
+				width: 100%;
+				height: 100%;
+			}
+			
+			#background {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				
+				background: url("file:///C:/Users/V360/Desktop/background.jpeg") no-repeat center center fixed;
+				background-size: cover;
+				
+				filter: blur(4px);
+				
+				z-index: 1;
+			}
+			
+			.center {
+				display: flex;
+				flex-flow: row wrap;
+				
+				justify-content: center;
+				align-items: center;
+				
+				z-index: 2;
+			}
+			
+			.content {
+				margin: 1rem;
+				width: 100%;
+				height: 100%;
+				max-width: 44rem;
+				max-height: 32rem;
+				
+				color: #ffffff;
+				background-color: #2f2f2f;
+				
+				box-shadow: 0px 0px 8px black;
+			}
+			
+			#timedate {
+				padding-bottom: 1rem;
+				
+				color: #5f5f5f;
+				
+				font-size: 2rem;
+				text-align: center;
+			}
+			
+			.icons, .icon {
+				display: grid;
+			}
+			
+			.icons {
+				grid-template-columns: repeat(6, 1fr);
+				grid-column-gap: 0;
+			}
+			
+			.iconbox {
+				display: inline-flex;
+				margin: .5rem;
+				width: 6rem;
+				height: 6rem;
+				
+				justify-content: center;
+				align-items: center;
+				
+				background-color: #3f3f3f;
+				fill: #3f3f3f;
+				
+				transition: all ease-in-out .2s;
+			}
+			
+			.iconbox:hover {
+				margin: 0;
+				width: 7rem;
+				height: 7rem;
+				
+				background-color: #5f5f5f;
+				fill: #5f5f5f;
+				
+				box-shadow: 0px 0px 4px #5f5f5f;
+			}
+			
+			header {
+				display: flex;
+				border-bottom: 2px solid #1f1f1f;
+				padding: 1rem;
+				
+				width: 100%;
+				height: 3rem;
+				
+				justify-content: center;
+				align-items: center;
+				
+				background-color: #5f5f5f;
+				
+				font-size: 1rem;
+			}
+			
+			article {
+				padding: 1rem;
+				width: 100%;
+				height: calc(100% - 3rem) !important;
+			}
+			
+			em {
+				color: #cfcfcf;
+				
+				font-style: normal;
+				font-weight: lighter;
+			}
+			
+			br {
+				display: block;
+				width: 100%;
+				height: 1px;
+			}
+			
+			a, a * {
+				cursor: pointer;
+			}
+			
+			svg {
+				fill: inherit;
+			}
+			
+			svg path {
+				stroke: transparent;
+				fill: white;
+			}
+			
+			svg circle {
+				stroke: white;
+				fill: inherit;
+			}
+			
+			svg polygon {
+				stroke: transparent;
+				fill: inherit;
+			}
+			
+			#youtube.iconbox:hover {
+				background-color: #ff0000;
+				fill: #ff0000;
+			}
+			
+			#twitter.iconbox:hover {
+				background-color: #1da1f2;
+				fill: #1da1f2;
+			}
+			
+			#smilebasicsource.iconbox:hover {
+				background-color: #009688;
+				fill: #009688;
+			}
+			
+			@media (max-width: 48rem) {
+				.icons {
+					grid-template-columns: repeat(3, 1fr);
+				}
+			}
+			
+			@media (max-width: 28rem) {
+				.icons {
+					grid-template-columns: repeat(2, 1fr);
+				}
+			}
+		</style>
+		<script type="text/javascript">
+			var time;
+			
+			window.addEventListener("load", function() {
+				clean(document.getElementById("window"));
+				document.getElementById("window").style = "";
+				time = document.getElementById("time");
+			});
+			
+			function updateTime() {
+			}
+			
+			// From sitepoint.com/removing-useless-nodes-from-the-dom/
+			// I just fixed their awful formatting
+			// and made it not mess with syntax highlighting
+			function clean(node) {
+				for (var n = 0; n < node.childNodes.length; n++) {
+					var child = node.childNodes[n];
+					
+					if (child.nodeType === 8 || (child.nodeType === 3 && !/\S/.test(child.nodeValue))) {
+						node.removeChild(child);
+						n--;
+					} else if (child.nodeType === 1 && !/pre|code|blockquote/i.test(child.tagName)) {
+						clean(child);
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="background"></div>
+		<div id="window" class="center" style="display: none;">
+			<div class="content">
+				<header><span>New Tab <em>by V360</em></span></header>
+				<article class="center">
+					<div id="timedate">
+						12:00 PM
+					</div>
+					<div class="icons">
+						<div class="icon">
+							<a id="youtube" class="iconbox" href="https://youtube.com/feed/subscriptions">
+								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  x="0px" y="0px" width="72" height="72" viewBox="-12 -8 144 100" enable-background="new 0 0 72 72" xml:space="preserve">
+									<path d="M 118.9,13.3 C 117.5,8.1 113.4,4 108.2,2.6 98.7,0 60.7,0 60.7,0 60.7,0 22.7,0 13.2,2.5 8.1,3.9 3.9,8.1 2.5,13.3 0,22.8 0,42.5 0,42.5 0,42.5 0,62.3 2.5,71.7 3.9,76.9 8,81 13.2,82.4 22.8,85 60.7,85 60.7,85 c 0,0 38,0 47.5,-2.5 5.2,-1.4 9.3,-5.5 10.7,-10.7 2.5,-9.5 2.5,-29.2 2.5,-29.2 0,0 0.1,-19.8 -2.5,-29.3 z"></path>
+									<polygon points="80.2,42.5 48.6,24.3 48.6,60.7"></polygon>
+								</svg>
+							</a>
+						</div>
+						<div class="icon">
+							<a id="twitter" class="iconbox" href="https://twitter.com/">
+								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="72" height="72" viewBox="0 0 72 72" enable-background="new 0 0 72 72" xml:space="preserve">
+									<path d="M68.812,15.141c-2.348,1.039-4.869,1.743-7.519,2.06c2.703-1.62,4.778-4.187,5.756-7.244c-2.529,1.5-5.33,2.592-8.313,3.176C56.349,10.591,52.948,9,49.182,9c-7.229,0-13.092,5.861-13.092,13.093c0,1.026,0.118,2.021,0.338,2.981c-10.885-0.548-20.528-5.757-26.987-13.679c-1.126,1.936-1.771,4.184-1.771,6.581c0,4.542,2.312,8.551,5.824,10.898c-2.146-0.069-4.165-0.657-5.93-1.638c-0.002,0.055-0.002,0.11-0.002,0.162c0,6.345,4.513,11.638,10.504,12.84c-1.101,0.298-2.256,0.457-3.449,0.457c-0.846,0-1.667-0.078-2.465-0.231c1.667,5.2,6.499,8.986,12.23,9.09c-4.482,3.512-10.129,5.606-16.26,5.606c-1.055,0-2.096-0.061-3.122-0.184c5.794,3.717,12.676,5.882,20.067,5.882c24.083,0,37.251-19.949,37.251-37.249c0-0.566-0.014-1.134-0.039-1.694C64.838,20.068,67.058,17.765,68.812,15.141z" />
+								</svg>
+							</a>
+						</div>
+						<div class="icon">
+							<a id="smilebasicsource" class="iconbox" href="https://smilebasicsource.com/activity">
+								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="72" height="72" viewBox="0 0 192 192" enable-background="new 0 0 72 72" xml:space="preserve">
+									<circle cx="96" cy="96" r="88" />
+									<circle cx="96" cy="96" r="72" />
+									<path d="m45 60h32v10h10v52h-10v10h-32v-10h-10v-52h10zm2 12v48h28v-48zm58 -12h12v30h8v-10h10v-10h10v-10h12v12h-10v10h-10v10h-10v8h10v10h10v10h10v12h-12v-10h-10v-10h-10v-10h-8v30h-12z" />
+								</svg>
+							</a>
+						</div>
+						<div class="icon">
+							<a id="svg1" class="iconbox" href="https://youtube.com/feed/subscriptions">
+								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  x="0px" y="0px" width="72" height="72" viewBox="-12 -8 144 100" enable-background="new 0 0 72 72" xml:space="preserve">
+									<path d="M 118.9,13.3 C 117.5,8.1 113.4,4 108.2,2.6 98.7,0 60.7,0 60.7,0 60.7,0 22.7,0 13.2,2.5 8.1,3.9 3.9,8.1 2.5,13.3 0,22.8 0,42.5 0,42.5 0,42.5 0,62.3 2.5,71.7 3.9,76.9 8,81 13.2,82.4 22.8,85 60.7,85 60.7,85 c 0,0 38,0 47.5,-2.5 5.2,-1.4 9.3,-5.5 10.7,-10.7 2.5,-9.5 2.5,-29.2 2.5,-29.2 0,0 0.1,-19.8 -2.5,-29.3 z"></path>
+									<polygon points="80.2,42.5 48.6,24.3 48.6,60.7"></polygon>
+								</svg>
+							</a>
+						</div>
+						<div class="icon">
+							<a id="svg2" class="iconbox" href="https://twitter.com/">
+								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="72" height="72" viewBox="0 0 72 72" enable-background="new 0 0 72 72" xml:space="preserve">
+									<path d="M68.812,15.141c-2.348,1.039-4.869,1.743-7.519,2.06c2.703-1.62,4.778-4.187,5.756-7.244c-2.529,1.5-5.33,2.592-8.313,3.176C56.349,10.591,52.948,9,49.182,9c-7.229,0-13.092,5.861-13.092,13.093c0,1.026,0.118,2.021,0.338,2.981c-10.885-0.548-20.528-5.757-26.987-13.679c-1.126,1.936-1.771,4.184-1.771,6.581c0,4.542,2.312,8.551,5.824,10.898c-2.146-0.069-4.165-0.657-5.93-1.638c-0.002,0.055-0.002,0.11-0.002,0.162c0,6.345,4.513,11.638,10.504,12.84c-1.101,0.298-2.256,0.457-3.449,0.457c-0.846,0-1.667-0.078-2.465-0.231c1.667,5.2,6.499,8.986,12.23,9.09c-4.482,3.512-10.129,5.606-16.26,5.606c-1.055,0-2.096-0.061-3.122-0.184c5.794,3.717,12.676,5.882,20.067,5.882c24.083,0,37.251-19.949,37.251-37.249c0-0.566-0.014-1.134-0.039-1.694C64.838,20.068,67.058,17.765,68.812,15.141z" />
+								</svg>
+							</a>
+						</div>
+						<div class="icon">
+							<a id="svg3" class="iconbox" href="https://smilebasicsource.com/activity">
+								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="72" height="72" viewBox="0 0 192 192" enable-background="new 0 0 72 72" xml:space="preserve">
+									<circle cx="96" cy="96" r="88" />
+									<circle cx="96" cy="96" r="72" />
+									<path d="m45 60h32v10h10v52h-10v10h-32v-10h-10v-52h10zm2 12v48h28v-48zm58 -12h12v30h8v-10h10v-10h10v-10h12v12h-10v10h-10v10h-10v8h10v10h10v10h10v12h-12v-10h-10v-10h-10v-10h-8v30h-12z" />
+								</svg>
+							</a>
+						</div>
+					</div>
+				</article>
+			</div>
+		</div>
+	</body>
+</html>
