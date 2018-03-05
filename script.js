@@ -1,8 +1,12 @@
 var time;
+var block;
 
 window.addEventListener("load", setup);
 
 function setup() {
+	block = document.getElementById("block");
+	window.addEventListener("beforeunload", fade);
+	
 	clean(document.getElementById("window"));
 	document.getElementById("window").style = "";
 	
@@ -14,6 +18,10 @@ function setup() {
 	];
 	
 	updateTime();
+}
+
+function fade() {
+	block.className = "fade";
 }
 
 function updateTime() {
