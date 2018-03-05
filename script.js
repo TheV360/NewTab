@@ -1,10 +1,12 @@
+var time;
+
 window.addEventListener("load", setup);
 
 function setup() {
 	clean(document.getElementById("window"));
 	document.getElementById("window").style = "";
 	
-	var time = document.getElementById("time");
+	time = document.getElementById("timedate");
 	
 	updateTime();
 }
@@ -20,7 +22,7 @@ function updateTime() {
 		timeSuffix = "PM";
 	}
 	
-	time.innerHTML = String(now.getHours() % 12) + ":" + String(now.getMinutes()) + timeSuffix;
+	time.innerHTML = String(now.getHours() % 12) + ":" + String(now.getMinutes()) + " " + timeSuffix;
 	
 	window.setTimeout(updateTime, 100);
 }
