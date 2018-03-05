@@ -1,12 +1,10 @@
-var time;
-
 window.addEventListener("load", setup);
 
 function setup() {
 	clean(document.getElementById("window"));
 	document.getElementById("window").style = "";
 	
-	time = document.getElementById("time");
+	var time = document.getElementById("time");
 	
 	updateTime();
 }
