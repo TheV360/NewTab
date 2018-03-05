@@ -13,13 +13,13 @@
 }
 
 ::-moz-selection {
-	color: #ffffff;
-	background-color: #000000;
+	color: black;
+	background-color: white;
 }
 
 ::selection {
-	color: #ffffff;
-	background-color: #000000;
+	color: black;
+	background-color: white;
 }
 
 ::placeholder {
@@ -36,7 +36,7 @@ html, body, .center {
 html {
 	font-size: 16px;
 	
-	background-color: #0f0f0f;
+	background-color: black;
 }
 
 #block {
@@ -75,7 +75,7 @@ html {
 	transition: opacity .5s;
 	opacity: 1;
 	
-	background-color: white;
+	background-color: black;
 }
 
 #background {
