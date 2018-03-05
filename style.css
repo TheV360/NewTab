@@ -200,6 +200,11 @@ svg polygon {
 	fill: #009688;
 }
 
+#github.iconbox:hover {
+	background-color: #191717;
+	fill: #191717;
+}
+
 @media (max-width: 44rem) {
 	/*html {
 		font-size: calc(100% / 44rem);
