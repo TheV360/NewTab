@@ -1,15 +1,19 @@
 var time;
 
-window.addEventListener("load", function() {
+window.addEventListener("load", setup);
+
+function setup() {
 	clean(document.getElementById("window"));
 	document.getElementById("window").style = "";
+	
 	time = document.getElementById("time");
 	
-	window.setTimeout(updateTime, 100);
-});
+	updateTime();
+}
 
 function updateTime() {
 	var now = new Date();
+	
 	var timeSuffix;
 	
 	if (now.getHours() < 12) {
