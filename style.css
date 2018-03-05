@@ -60,21 +60,12 @@ html {
 }
 
 #block.fadeout {
-	animation: fadeout .5s;
-}
-
-@keyframes fadeout {
-	from {
-		height: 100%;
-		
-		opacity: 1;
+	width: 100%;
 	
-		background-color: white;
-	}
+	transition: opacity .5s;
+	opacity: 1;
 	
-	to {
-		opacity: 0;
-	}
+	background-color: white;
 }
 
 #background {
