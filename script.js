@@ -91,7 +91,7 @@ function updateSearch() {
 
 function goSearch() {
 	if (search.box.value.length > 0) {
-		fadeout();
+		//fadeout();
 		window.setTimeout(function() { location.assign("https://google.com/search?q=" + encodeURI(search.box.value)); }, 500);
 	}
 	
