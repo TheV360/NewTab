@@ -22,7 +22,7 @@ function updateTime() {
 		timeSuffix = "PM";
 	}
 	
-	time.innerHTML = String(now.getHours() % 12) + ":" + String(now.getMinutes()) + " " + timeSuffix;
+	time.innerHTML = (now.getHours() % 12).toString() + ":" + ("00" + (now.getMinutes()).toString()).slice(-2) + " " + timeSuffix;
 	
 	window.setTimeout(updateTime, 100);
 }

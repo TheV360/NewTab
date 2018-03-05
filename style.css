@@ -22,6 +22,8 @@
 }
 
 html {
+	font-size: 16px;
+	
 	background-color: #0f0f0f;
 }
 
@@ -186,14 +188,8 @@ svg polygon {
 	fill: #009688;
 }
 
-@media (max-width: 48rem) {
-	.icons {
-		grid-template-columns: repeat(3, 1fr);
-	}
-}
-
-@media (max-width: 28rem) {
-	.icons {
-		grid-template-columns: repeat(2, 1fr);
-	}
+@media (max-width: 44rem) {
+	/*html {
+		font-size: calc(100% / 44rem);
+	}*/
 }
