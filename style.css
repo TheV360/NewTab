@@ -211,7 +211,7 @@ html {
 
 header {
 	display: block;
-	border-bottom: 2px solid #1f1f1f;
+	/*border-bottom: 2px solid #1f1f1f;*/
 	padding: 1rem;
 	
 	width: 100%;
