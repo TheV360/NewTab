@@ -183,6 +183,11 @@ html {
 	grid-column-gap: 0;
 }
 
+.icon {
+	width: 7rem;
+	height: 7rem;
+}
+
 .iconbox {
 	display: flex;
 	margin: .5rem;
@@ -262,21 +267,24 @@ a, a * {
 	cursor: pointer;
 }
 
-svg {
+.iconbox svg {
+	width: 4.5rem;
+	height: 4.5rem;
+	
 	fill: inherit;
 }
 
-svg path {
+.iconbox svg path {
 	stroke: transparent;
 	fill: white;
 }
 
-svg circle {
+.iconbox svg circle {
 	stroke: white;
 	fill: inherit;
 }
 
-svg polygon {
+.iconbox svg polygon {
 	stroke: transparent;
 	fill: inherit;
 }
