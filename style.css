@@ -60,7 +60,7 @@ html {
 }
 
 #block.fadeout {
-	width: 100%;
+	height: 100%;
 	
 	transition: opacity .5s;
 	opacity: 1;
