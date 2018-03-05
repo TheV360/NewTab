@@ -7,7 +7,8 @@ window.addEventListener("load", setup);
 
 function setup() {
 	block = document.getElementById("block");
-	block.addEventListener("beforeunload", fadeout);
+	//fadein();
+	window.addEventListener("beforeunload", fadeout);
 	
 	clean(document.getElementById("window"));
 	
@@ -32,23 +33,31 @@ function setup() {
 	search.parent.addEventListener("submit", goSearch);
 	search.box.addEventListener("input", updateSearch);
 	
-	/*bookmark = Array(12);
-	for (i = 0; i < 12; i++) {
-		bookmark[i] = document.getElementsByClassName("icon");
-	}
+	bookmark = document.querySelectorAll(".icon a");
 	
-	bookmark.forEach(function(bookmark) {
-		bookmark.addEventListener("click", goBookmark);
+	/*bookmark.forEach(function(bookmarkItem) {
+		bookmarkItem.addEventListener("click", getBookmark(bookmarkItem));
 	});*/
+}
+
+function fadein() {
+	block.className = "";
 }
 
 function fadeout() {
 	block.className = "fadeout";
 }
 
-function getBookmark() {
-	
-}
+/*function getBookmark(bookmarkItem) {
+	return function(e) {
+		e.preventDefault();
+		
+		fadeout();
+		window.setTimeout(function() { location.assign(bookmarkItem.href); }, 500);
+		
+		return false;
+	}
+}*/
 
 function updateTime() {
 	var now = new Date();
@@ -81,14 +90,17 @@ function updateSearch() {
 }
 
 function goSearch() {
-	if (search.box.value.length > 0)
-		location.assign("https://google.com/search?q=" + encodeURI(search.box.value));
+	if (search.box.value.length > 0) {
+		fadeout();
+		window.setTimeout(function() { location.assign("https://google.com/search?q=" + encodeURI(search.box.value)); }, 500);
+	}
+	
 	return true;
 }
 
-function goBookmark() {
+/*function goBookmark() {
 	
-}
+}*/
 
 // From sitepoint.com/removing-useless-nodes-from-the-dom/
 // I just fixed their awful formatting
