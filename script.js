@@ -6,10 +6,9 @@ window.addEventListener("load", setup);
 
 function setup() {
 	block = document.getElementById("block");
-	window.addEventListener("beforeunload", fade);
+	window.addEventListener("beforeunload", fadeout);
 	
 	clean(document.getElementById("window"));
-	document.getElementById("window").style = "";
 	
 	time = {
 		parent: document.getElementById("timedate"),
@@ -30,8 +29,8 @@ function setup() {
 	search.parent.addEventListener("submit", updateSearch);
 }
 
-function fade() {
-	block.className = "fade";
+function fadeout() {
+	block.className = "fadeout";
 }
 
 function updateTime() {
