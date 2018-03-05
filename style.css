@@ -80,6 +80,18 @@ html, body, .center {
 	text-align: center;
 }
 
+#timedate span {
+	transition: opacity ease-out .5s;
+}
+
+#timedate span.on {
+	opacity: 1;
+}
+
+#timedate span.off {
+	opacity: 0;
+}
+
 .icons, .icon {
 	display: grid;
 }

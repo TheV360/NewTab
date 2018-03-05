@@ -6,7 +6,12 @@ function setup() {
 	clean(document.getElementById("window"));
 	document.getElementById("window").style = "";
 	
-	time = document.getElementById("timedate");
+	time = [
+		document.getElementById("hour"),
+		document.getElementById("blink"),
+		document.getElementById("minute"),
+		document.getElementById("suffix")
+	];
 	
 	updateTime();
 }
@@ -14,15 +19,21 @@ function setup() {
 function updateTime() {
 	var now = new Date();
 	
-	var timeSuffix;
+	time[0].innerHTML = now.getHours() % 12;
 	
-	if (now.getHours() < 12) {
-		timeSuffix = "AM";
+	if (now.getSeconds() % 2 > 0) {
+		time[1].className = "off";
 	} else {
-		timeSuffix = "PM";
+		time[1].className = "on";
 	}
 	
-	time.innerHTML = (now.getHours() % 12).toString() + ":" + ("00" + (now.getMinutes()).toString()).slice(-2) + " " + timeSuffix;
+	time[2].innerHTML = ("0" + now.getMinutes()).slice(-2);
+	
+	if (now.getHours() < 12) {
+		time[3].innerHTML = " AM";
+	} else {
+		time[3].innerHTML = " PM";
+	}
 	
 	window.setTimeout(updateTime, 100);
 }
