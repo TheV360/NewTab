@@ -9,9 +9,16 @@ window.addEventListener("load", function() {
 });
 
 function updateTime() {
-	var now = Date.now();
+	var now = new Date();
+	var timeSuffix;
 	
-	time.innerHTML = String(now.getHours()) + ":" + String(now.getMinutes());
+	if (now.getHours() < 12) {
+		timeSuffix = "AM";
+	} else {
+		timeSuffix = "PM";
+	}
+	
+	time.innerHTML = String(now.getHours() % 12) + ":" + String(now.getMinutes()) + timeSuffix;
 	
 	window.setTimeout(updateTime, 100);
 }
