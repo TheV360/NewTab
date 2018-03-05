@@ -1,0 +1,199 @@
+* {
+	margin: 0;
+	border: 0;
+	padding: 0;
+	
+	box-sizing: border-box;
+	cursor: default;
+	
+	font-family: "Lato", sans-serif;
+	
+	z-index: 4;
+}
+
+::-moz-selection {
+	color: #ffffff;
+	background-color: #000000;
+}
+
+::selection {
+	color: #ffffff;
+	background-color: #000000;
+}
+
+html {
+	background-color: #0f0f0f;
+}
+
+html, body, .center {
+	width: 100%;
+	height: 100%;
+}
+
+#background {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	
+	background: url("/NewTab/background.jpeg") no-repeat center center fixed;
+	background-size: cover;
+	
+	filter: blur(4px);
+	
+	z-index: 1;
+}
+
+.center {
+	display: flex;
+	flex-flow: row wrap;
+	
+	justify-content: center;
+	align-items: center;
+	
+	z-index: 2;
+}
+
+.content {
+	margin: 1rem;
+	width: 100%;
+	height: 100%;
+	max-width: 44rem;
+	max-height: 22rem;
+	
+	color: #ffffff;
+	background-color: #2f2f2f;
+	
+	box-shadow: 0px 0px 8px black;
+}
+
+#timedate {
+	padding-bottom: 1rem;
+	
+	color: #5f5f5f;
+	
+	line-height: 2rem;
+	font-size: 2rem;
+	text-align: center;
+}
+
+.icons, .icon {
+	display: grid;
+}
+
+.icons {
+	grid-template-columns: repeat(6, 1fr);
+	grid-column-gap: 0;
+}
+
+.iconbox {
+	display: flex;
+	margin: .5rem;
+	width: 6rem;
+	height: 6rem;
+	
+	justify-content: center;
+	align-items: center;
+	
+	background-color: #3f3f3f;
+	fill: #3f3f3f;
+	
+	transition: all ease-in-out .2s;
+}
+
+.iconbox:hover {
+	margin: 0;
+	width: 7rem;
+	height: 7rem;
+	
+	background-color: #5f5f5f;
+	fill: #5f5f5f;
+	
+	box-shadow: 0px 0px 4px #5f5f5f;
+}
+
+header {
+	display: flex;
+	border-bottom: 2px solid #1f1f1f;
+	padding: 1rem;
+	
+	width: 100%;
+	height: 3rem;
+	
+	justify-content: center;
+	align-items: center;
+	
+	background-color: #5f5f5f;
+	
+	font-size: 1rem;
+}
+
+article {
+	padding: 1rem;
+	width: 100%;
+	height: calc(100% - 3rem);
+}
+
+em {
+	color: #cfcfcf;
+	
+	font-style: normal;
+	font-weight: lighter;
+}
+
+br {
+	display: block;
+	width: 100%;
+	height: 1px;
+}
+
+a, a * {
+	cursor: pointer;
+}
+
+svg {
+	fill: inherit;
+}
+
+svg path {
+	stroke: transparent;
+	fill: white;
+}
+
+svg circle {
+	stroke: white;
+	fill: inherit;
+}
+
+svg polygon {
+	stroke: transparent;
+	fill: inherit;
+}
+
+#youtube.iconbox:hover {
+	background-color: #ff0000;
+	fill: #ff0000;
+}
+
+#twitter.iconbox:hover {
+	background-color: #1da1f2;
+	fill: #1da1f2;
+}
+
+#smilebasicsource.iconbox:hover {
+	background-color: #009688;
+	fill: #009688;
+}
+
+@media (max-width: 48rem) {
+	.icons {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media (max-width: 28rem) {
+	.icons {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
