@@ -1,12 +1,13 @@
+var block;
 var time;
 var search;
-var block;
+var bookmark;
 
 window.addEventListener("load", setup);
 
 function setup() {
 	block = document.getElementById("block");
-	window.addEventListener("beforeunload", fadeout);
+	block.addEventListener("beforeunload", fadeout);
 	
 	clean(document.getElementById("window"));
 	
@@ -26,11 +27,27 @@ function setup() {
 		button: document.getElementById("searchbutton")
 	};
 	
-	search.parent.addEventListener("submit", updateSearch);
+	updateSearch();
+	
+	search.parent.addEventListener("submit", goSearch);
+	search.box.addEventListener("input", updateSearch);
+	
+	/*bookmark = Array(12);
+	for (i = 0; i < 12; i++) {
+		bookmark[i] = document.getElementsByClassName("icon");
+	}
+	
+	bookmark.forEach(function(bookmark) {
+		bookmark.addEventListener("click", goBookmark);
+	});*/
 }
 
 function fadeout() {
 	block.className = "fadeout";
+}
+
+function getBookmark() {
+	
 }
 
 function updateTime() {
@@ -56,9 +73,21 @@ function updateTime() {
 }
 
 function updateSearch() {
+	if (search.box.value.length > 0) {
+		search.button.className = "on";
+	} else {
+		search.button.className = "off";
+	}
+}
+
+function goSearch() {
 	if (search.box.value.length > 0)
 		location.assign("https://google.com/search?q=" + encodeURI(search.box.value));
 	return true;
+}
+
+function goBookmark() {
+	
 }
 
 // From sitepoint.com/removing-useless-nodes-from-the-dom/

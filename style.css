@@ -22,6 +22,12 @@
 	background-color: #000000;
 }
 
+::placeholder {
+	color: #7f7f7f;
+	
+	opacity: 1;
+}
+
 html, body, .center {
 	width: 100%;
 	height: 100%;
@@ -166,12 +172,26 @@ html {
 	width: calc(100% - 2rem);
 }
 
+#searchbox:hover, #searchbutton:hover:not(.off) {
+	background-color: #3f3f3f;
+}
+
 #searchbox:focus, #searchbutton:active {
 	background-color: #5f5f5f;
 }
 
 #searchbutton {
 	width: 2rem;
+	
+	transition: color ease-out .5s;
+}
+
+#searchbutton.on {
+	color: white;
+}
+
+#searchbutton.off {
+	color: #2f2f2f;
 }
 
 .icons, .icon {
@@ -198,6 +218,7 @@ html {
 	align-items: center;
 	
 	background-color: #3f3f3f;
+	stroke: #3f3f3f;
 	fill: #3f3f3f;
 	
 	transition: all ease-in-out .2s;
@@ -210,13 +231,10 @@ html {
 	
 	background-color: #5f5f5f;
 	fill: #5f5f5f;
-	
-	box-shadow: 0px 0px 4px #5f5f5f;
 }
 
 header {
 	display: block;
-	/*border-bottom: 2px solid #1f1f1f;*/
 	padding: 1rem;
 	
 	width: 100%;
@@ -268,26 +286,18 @@ a, a * {
 }
 
 .iconbox svg {
-	width: 4.5rem;
-	height: 4.5rem;
-	
-	fill: inherit;
+	width: 100%;
+	height: 100%;
+	padding: .75rem;
 }
 
-.iconbox svg path {
-	stroke: transparent;
-	fill: white;
-}
-
-.iconbox svg circle {
-	stroke: white;
-	fill: inherit;
-}
-
-.iconbox svg polygon {
-	stroke: transparent;
-	fill: inherit;
-}
+.svg-ii { stroke: inherit; fill: inherit; }
+.svg-tt { stroke: transparent; fill: transparent; }
+.svg-if, .svg-fi { stroke: inherit; fill: white; }
+.svg-si, .svg-is { stroke: white; fill: inherit; }
+.svg-tf, .svg-ft { stroke: transparent; fill: white; }
+.svg-st, .svg-ts { stroke: white; fill: transparent; }
+.svg-sf, .svg-fs { stroke: white; fill: white; }
 
 #youtube.iconbox:hover {
 	background-color: #ff0000;
@@ -297,6 +307,16 @@ a, a * {
 #twitter.iconbox:hover {
 	background-color: #1da1f2;
 	fill: #1da1f2;
+}
+
+#reddit.iconbox:hover {
+	background-color: #ff4500;
+	fill: #ff4500;
+}
+
+#tumblr.iconbox:hover {
+	background-color: #36465d;
+	fill: #36465d;
 }
 
 #smilebasicsource.iconbox:hover {
