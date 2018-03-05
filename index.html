@@ -4,6 +4,7 @@
 		<meta charset="UTF-8" />
 		<title>New Tab</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:300,400" />
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<script type="text/javascript" src="script.js"></script>
 	</head>
@@ -12,7 +13,11 @@
 		<div id="background"></div>
 		<div id="window" class="center" style="display: none;">
 			<div class="content">
-				<header><span>New Tab <em>by V360</em></span></header>
+				<header>
+					<!--<input id="customize" type="button" value="🔧" />-->
+					<span>New Tab <em>by V360</em></span>
+					<!--<input id="exit" type="button" value="❌" />-->
+				</header>
 				<article>
 					<div id="timedate">
 						<span id="hour">12</span>
@@ -20,6 +25,10 @@
 						<span id="minute">00</span>
 						<span id="suffix"> PM</span>
 					</div>
+					<form id="search" action="javascript:void(0);">
+						<input id="searchbox" type="search" placeholder="Search..." />
+						<input id="searchbutton" type="submit" value="▶" />
+					</form>
 					<div class="icons">
 						<div class="icon">
 							<a id="youtube" class="iconbox" href="https://youtube.com/feed/subscriptions">

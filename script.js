@@ -1,4 +1,5 @@
 var time;
+var search;
 var block;
 
 window.addEventListener("load", setup);
@@ -10,14 +11,23 @@ function setup() {
 	clean(document.getElementById("window"));
 	document.getElementById("window").style = "";
 	
-	time = [
-		document.getElementById("hour"),
-		document.getElementById("blink"),
-		document.getElementById("minute"),
-		document.getElementById("suffix")
-	];
+	time = {
+		parent: document.getElementById("timedate"),
+		hour: document.getElementById("hour"),
+		blink: document.getElementById("blink"),
+		minute: document.getElementById("minute"),
+		suffix: document.getElementById("suffix")
+	};
 	
 	updateTime();
+	
+	search = {
+		parent: document.getElementById("search"),
+		box: document.getElementById("searchbox"),
+		button: document.getElementById("searchbutton")
+	};
+	
+	search.parent.addEventListener("submit", updateSearch);
 }
 
 function fade() {
@@ -27,23 +37,29 @@ function fade() {
 function updateTime() {
 	var now = new Date();
 	
-	time[0].innerHTML = now.getHours() % 12;
+	time.hour.innerHTML = now.getHours() % 12;
 	
 	if (now.getSeconds() % 2 > 0) {
-		time[1].className = "off";
+		time.blink.className = "off";
 	} else {
-		time[1].className = "on";
+		time.blink.className = "on";
 	}
 	
-	time[2].innerHTML = ("0" + now.getMinutes()).slice(-2);
+	time.minute.innerHTML = ("0" + now.getMinutes()).slice(-2);
 	
 	if (now.getHours() < 12) {
-		time[3].innerHTML = " AM";
+		time.suffix.innerHTML = " AM";
 	} else {
-		time[3].innerHTML = " PM";
+		time.suffix.innerHTML = " PM";
 	}
 	
 	window.setTimeout(updateTime, 100);
+}
+
+function updateSearch() {
+	if (search.box.value.length > 0)
+		location.assign("https://google.com/search?q=" + encodeURI(search.box.value));
+	return true;
 }
 
 // From sitepoint.com/removing-useless-nodes-from-the-dom/
