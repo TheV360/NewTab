@@ -36,7 +36,7 @@ function fadeout() {
 function updateTime() {
 	var now = new Date();
 	
-	time.hour.innerHTML = now.getHours() % 12;
+	time.hour.innerHTML = ((now.getHours() - 1) % 12) + 1;
 	
 	if (now.getSeconds() % 2 > 0) {
 		time.blink.className = "off";
