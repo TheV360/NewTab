@@ -16,11 +16,14 @@
 	--fade-in: black;
 	--fade-out: black;
 	
-	--header-background: #5f5f5f;
+	--dark-gary: #2f2f2f;
+	
 	--header-text: white;
+	--header-background: #5f5f5f;
 	--header-thin: #cfcfcf;
 	--header-input: #2f2f2f;
 	
+	--content-text: white;
 	--content-background: #2f2f2f;
 	--content-timedate: #5f5f5f;
 	--content-search: var(--content-background);
@@ -28,8 +31,31 @@
 	--content-search-focus: #5f5f5f;
 	--content-placeholder: #7f7f7f;
 	
+	--icon-color: white;
 	--icon-background: #3f3f3f;
 	--icon-background-hover: #5f5f5f;
+}
+
+:root.white {
+	--fade-in: white;
+	--fade-out: white;
+	
+	--header-text: black;
+	--header-background: #afafaf;
+	--header-thin: #3f3f3f;
+	--header-input: #dfdfdf;
+	
+	--content-text: black;
+	--content-background: #dfdfdf;
+	--content-timedate: #afafaf;
+	--content-search: var(--content-background);
+	--content-search-hover: #cfcfcf;
+	--content-search-focus: #afafaf;
+	--content-placeholder: #7f7f7f;
+	
+	--icon-color: black;
+	--icon-background: #cfcfcf;
+	--icon-background-hover: #afafaf;
 }
 
 ::-moz-selection {
@@ -66,11 +92,19 @@ header {
 	width: 100%;
 	height: 3rem;
 	
+	color: var(--header-text);
 	background-color: var(--header-background);
 	
 	line-height: 1rem;
 	font-size: 1rem;
 	text-align: center;
+}
+
+header em {
+	color: var(--header-thin);
+	
+	font-style: normal;
+	font-weight: lighter;
 }
 
 header a, header a:link, header a:visited {
@@ -102,13 +136,6 @@ article {
 	padding: 1rem;
 	width: 100%;
 	height: calc(100% - 3rem);
-}
-
-em {
-	color: var(--header-thin);
-	
-	font-style: normal;
-	font-weight: lighter;
 }
 
 br {
@@ -207,7 +234,7 @@ a, a * {
 	max-width: 44rem;
 	max-height: 24rem;
 	
-	color: white;
+	color: var(--content-text);
 	background-color: var(--content-background);
 	
 	box-shadow: 0px 0px 8px black;
@@ -331,11 +358,11 @@ a, a * {
 
 .svg-ii { stroke: inherit; fill: inherit; }
 .svg-tt { stroke: transparent; fill: transparent; }
-.svg-if, .svg-fi { stroke: inherit; fill: white; }
-.svg-si, .svg-is { stroke: white; fill: inherit; }
-.svg-tf, .svg-ft { stroke: transparent; fill: white; }
-.svg-st, .svg-ts { stroke: white; fill: transparent; }
-.svg-sf, .svg-fs { stroke: white; fill: white; }
+.svg-if, .svg-fi { stroke: inherit; fill: var(--icon-color); }
+.svg-si, .svg-is { stroke: var(--icon-color); fill: inherit; }
+.svg-tf, .svg-ft { stroke: transparent; fill: var(--icon-color); }
+.svg-st, .svg-ts { stroke: var(--icon-color); fill: transparent; }
+.svg-sf, .svg-fs { stroke: var(--icon-color); fill: var(--icon-color); }
 .svg-it { stroke: inherit; fill: transparent; }
 .svg-ti { stroke: transparent; fill: inherit; }
 

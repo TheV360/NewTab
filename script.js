@@ -103,20 +103,21 @@ function updateTime() {
 
 function updateSearch() {
 	//Very dumb code, but...
-	if (search.box.value.length > 0) {
-		search.box.className = "on";
-		search.button.className = "on";
-	} else {
-		search.box.className = "";
-		search.button.className = "off";
-	}
-	
 	if (search.newTab || special.shift) {
 		search.button.value = "\u25B7";
 		search.button.title = "Search in new tab";
 	} else {
 		search.button.value = "\u25B6";
 		search.button.title = "Search";
+	}
+	
+	if (search.box.value.length > 0) {
+		search.box.className = "on";
+		search.button.className = "on";
+	} else {
+		search.box.className = "";
+		search.button.className = "off";
+		search.button.title = "";
 	}
 }
 
