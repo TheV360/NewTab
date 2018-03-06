@@ -347,7 +347,11 @@ a, a * {
 }
 
 @media (max-width: 44rem) {
-	html {
-		font-size: 50%;
+	.content {
+		max-width: 23rem;
+		max-height: 38rem;
+	}
+	.icons {
+		grid-template-columns: repeat(3, 1fr);
 	}
 }
