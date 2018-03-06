@@ -1,5 +1,5 @@
 # NewTab
-[https://thev360.github.io/NewTab](My new tab page) - Not finished, but it looks cool right now!
+[My new tab page](https://thev360.github.io/NewTab) - Not finished, but it looks cool right now!
 
 # Features
 * Fade effects
