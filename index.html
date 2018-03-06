@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
 		<meta name="theme-color" content="#2f2f2f" />
 		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:300,400" />
+		<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" />
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<script type="text/javascript" src="script.js"></script>
 	</head>
@@ -14,10 +15,10 @@
 		<div id="background"></div>
 		<div id="window" class="center">
 			<div class="content">
-				<header>
-					<!--<input id="customize" type="button" value="🔧" />-->
+				<header tabindex="0">
+					<button id="clock" class="fas fa-clock"></button>
 					<span><a href="https://github.com/TheV360/NewTab">New Tab</a><em> by <a href="https://thev360.github.io">V360</a></em></span>
-					<!--<input id="exit" type="button" value="❌" />-->
+					<button id="customization" class="fas fa-cog"></button>
 				</header>
 				<article>
 					<div id="timedate">
@@ -27,8 +28,8 @@
 						<span id="suffix"> PM</span>
 					</div>
 					<form id="search" action="javascript:void(0);">
-						<input id="searchbox" type="search" placeholder="Search..." />
-						<input id="searchbutton" type="submit" value="" title="" class="off" />
+						<input id="searchbox" type="search" placeholder="Search..." tabindex="1" />
+						<input id="searchbutton" type="submit" value="" title="" class="off" tabindex="2" />
 					</form>
 					<div class="icons">
 						<div class="icon">

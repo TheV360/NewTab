@@ -1,6 +1,7 @@
 var block;
 var storage;
 var background;
+var header;
 var time;
 var search;
 var bookmark;
@@ -19,11 +20,16 @@ function setup() {
 	// Storage
 	storage = window.localStorage;
 	
-	// background
+	// Background
 	background = document.getElementById("background");
-	
-	// better code later
 	background.className = "random" + (Math.floor(Math.random() * 2) + 1);
+	
+	// Header
+	header = {
+		clock: document.getElementById("clock"),
+		customize: document.getElementById("customize")
+	};
+	header.clock.addEventListener("click", toggleTheme);
 	
 	// Time
 	time = {
