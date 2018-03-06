@@ -104,8 +104,10 @@ function updateTime() {
 function updateSearch() {
 	//Very dumb code, but...
 	if (search.box.value.length > 0) {
+		search.box.className = "on";
 		search.button.className = "on";
 	} else {
+		search.box.className = "";
 		search.button.className = "off";
 	}
 	

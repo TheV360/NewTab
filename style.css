@@ -12,6 +12,26 @@
 	z-index: 4;
 }
 
+:root {
+	--fade-in: black;
+	--fade-out: black;
+	
+	--header-background: #5f5f5f;
+	--header-text: white;
+	--header-thin: #cfcfcf;
+	--header-input: #2f2f2f;
+	
+	--content-background: #2f2f2f;
+	--content-timedate: #5f5f5f;
+	--content-search: var(--content-background);
+	--content-search-hover: #3f3f3f;
+	--content-search-focus: #5f5f5f;
+	--content-placeholder: #7f7f7f;
+	
+	--icon-background: #3f3f3f;
+	--icon-background-hover: #5f5f5f;
+}
+
 ::-moz-selection {
 	color: black;
 	background-color: white;
@@ -23,7 +43,7 @@
 }
 
 ::placeholder {
-	color: #7f7f7f;
+	color: var(--content-placeholder);
 	
 	opacity: 1;
 }
@@ -37,6 +57,68 @@ html {
 	font-size: 16px;
 	
 	background-color: black;
+}
+
+header {
+	display: block;
+	padding: 1rem;
+	
+	width: 100%;
+	height: 3rem;
+	
+	background-color: var(--header-background);
+	
+	line-height: 1rem;
+	font-size: 1rem;
+	text-align: center;
+}
+
+header a, header a:link, header a:visited {
+	color: inherit;
+	text-decoration: none;
+}
+
+header a:hover {
+	color: inherit;
+	border-bottom: 1px solid;
+}
+
+header input {
+	width: 1rem;
+	height: 1rem;
+	
+	background-color: var(--header-input);
+}
+
+#customize {
+	float: left;
+}
+
+#exit {
+	float: right;
+}
+
+article {
+	padding: 1rem;
+	width: 100%;
+	height: calc(100% - 3rem);
+}
+
+em {
+	color: var(--header-thin);
+	
+	font-style: normal;
+	font-weight: lighter;
+}
+
+br {
+	display: block;
+	width: 100%;
+	height: 1px;
+}
+
+a, a * {
+	cursor: pointer;
 }
 
 #block {
@@ -57,7 +139,7 @@ html {
 		
 		opacity: 1;
 	
-		background-color: black;
+		background-color: var(--fade-in);
 	}
 	
 	to {
@@ -65,7 +147,7 @@ html {
 		
 		opacity: 0;
 		
-		background-color: black;
+		background-color: var(--fade-in);
 	}
 }
 
@@ -75,7 +157,7 @@ html {
 	transition: opacity .5s;
 	opacity: 1;
 	
-	background-color: black;
+	background-color: var(--fade-out);
 }
 
 #background {
@@ -126,7 +208,7 @@ html {
 	max-height: 24rem;
 	
 	color: white;
-	background-color: #2f2f2f;
+	background-color: var(--content-background);
 	
 	box-shadow: 0px 0px 8px black;
 }
@@ -134,7 +216,7 @@ html {
 #timedate {
 	padding-bottom: .5rem;
 	
-	color: #5f5f5f;
+	color: var(--content-timedate);
 	
 	line-height: 2rem;
 	font-size: 2rem;
@@ -158,7 +240,7 @@ html {
 	
 	color: white;
 	
-	background-color: #2f2f2f;
+	background-color: var(--content-background);
 	
 	line-height: 1rem;
 	font-size: 1rem;
@@ -180,11 +262,11 @@ html {
 }
 
 #searchbox:hover, #searchbutton:hover:not(.off) {
-	background-color: #3f3f3f;
+	background-color: var(--content-search-hover);
 }
 
 #searchbox:focus, #searchbutton:active {
-	background-color: #5f5f5f;
+	background-color: var(--content-search-focus);
 }
 
 #searchbutton {
@@ -224,9 +306,9 @@ html {
 	justify-content: center;
 	align-items: center;
 	
-	background-color: #3f3f3f;
-	stroke: #3f3f3f;
-	fill: #3f3f3f;
+	background-color: var(--icon-background);
+	stroke: var(--icon-background);
+	fill: var(--icon-background);
 	
 	transition: all ease-in-out .2s;
 }
@@ -236,70 +318,9 @@ html {
 	width: 7rem;
 	height: 7rem;
 	
-	background-color: #5f5f5f;
-	fill: #5f5f5f;
-}
-
-header {
-	display: block;
-	padding: 1rem;
-	
-	width: 100%;
-	height: 3rem;
-	
-	background-color: #5f5f5f;
-	
-	line-height: 1rem;
-	font-size: 1rem;
-	text-align: center;
-}
-
-header a, header a:link, header a:visited {
-	color: inherit;
-	text-decoration: none;
-}
-
-header a:hover {
-	color: inherit;
-	border-bottom: 1px solid;
-}
-
-header input {
-	width: 1rem;
-	height: 1rem;
-	
-	background-color: #2f2f2f;
-}
-
-#customize {
-	float: left;
-}
-
-#exit {
-	float: right;
-}
-
-article {
-	padding: 1rem;
-	width: 100%;
-	height: calc(100% - 3rem);
-}
-
-em {
-	color: #cfcfcf;
-	
-	font-style: normal;
-	font-weight: lighter;
-}
-
-br {
-	display: block;
-	width: 100%;
-	height: 1px;
-}
-
-a, a * {
-	cursor: pointer;
+	background-color: var(--icon-background-hover);
+	stroke: var(--icon-background-hover);
+	fill: var(--icon-background-hover);
 }
 
 .iconbox svg {
@@ -315,6 +336,8 @@ a, a * {
 .svg-tf, .svg-ft { stroke: transparent; fill: white; }
 .svg-st, .svg-ts { stroke: white; fill: transparent; }
 .svg-sf, .svg-fs { stroke: white; fill: white; }
+.svg-it { stroke: inherit; fill: transparent; }
+.svg-ti { stroke: transparent; fill: inherit; }
 
 #youtube.iconbox:hover {
 	background-color: #ff0000;
@@ -350,7 +373,9 @@ a, a * {
 	html {
 		font-size: 75%;
 	}
-	
+}
+
+@media (orientation: portrait) {
 	.content {
 		max-width: 23rem;
 		max-height: 38rem;
