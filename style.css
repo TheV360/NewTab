@@ -316,9 +316,16 @@ a, a * {
 #searchbox {
 	cursor: text;
 	
+	padding: 0 .5rem;
+	width: 100%;
+	
+	text-align: center;
+}
+
+#searchbox.on, #searchbox:focus {
 	padding: 0 2.5rem 0 .5rem;
 	
-	width: 100%;
+	text-align: left;
 }
 
 #searchbox:hover, #searchbutton:hover:not(.off) {
