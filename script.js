@@ -7,7 +7,6 @@ window.addEventListener("load", setup);
 
 function setup() {
 	block = document.getElementById("block");
-	//fadein();
 	window.addEventListener("beforeunload", fadeout);
 	
 	clean(document.getElementById("window"));
@@ -40,10 +39,6 @@ function setup() {
 	/*bookmark.forEach(function(bookmarkItem) {
 		bookmarkItem.addEventListener("click", getBookmark(bookmarkItem));
 	});*/
-}
-
-function fadein() {
-	block.className = "";
 }
 
 function fadeout() {
@@ -114,11 +109,9 @@ function goSearch(event) {
 }
 
 function altSearch(event) {
-	if (search.box.value.length > 0) {
-		if (event.which == 2) {
-			search.newTab = !search.newTab;
-			updateSearch();
-		}
+	if (search.box.value.length > 0 && event.which == 2) {
+		search.newTab = !search.newTab;
+		updateSearch();
 	}
 }
 
