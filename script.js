@@ -1,4 +1,5 @@
 var block;
+var storage;
 var background;
 var time;
 var search;
@@ -14,6 +15,9 @@ function setup() {
 	// Block
 	block = document.getElementById("block");
 	window.addEventListener("beforeunload", fadeout);
+	
+	// Storage
+	storage = window.localStorage;
 	
 	// background
 	background = document.getElementById("background");
@@ -60,12 +64,23 @@ function setup() {
 	document.addEventListener("keyup", updateSpecial);
 	
 	// Everything's good to go!
+	updateStorage();
 	updateTime();
 	updateSearch();
 }
 
 function fadeout() {
 	block.className = "fadeout";
+}
+
+function toggleTheme() {
+	if (storage.getItem("theme") == "white") {
+		storage.setItem("theme", "");
+	} else {
+		storage.setItem("theme", "white");
+	}
+	
+	updateStorage();
 }
 
 /*function getBookmark(bookmarkItem) {
@@ -78,6 +93,10 @@ function fadeout() {
 		return false;
 	}
 }*/
+
+function updateStorage() {
+	document.documentElement.className = storage.getItem("theme");
+}
 
 function updateTime() {
 	var now = new Date();
@@ -132,8 +151,8 @@ function updateSpecial(event) {
 function goSearch(event) {
 	var searchURL = "https://google.com/search?q=" + encodeURI(search.box.value);
 	
-	// override search.newTab if you're holding shift (or alt, but there's no feedback for it...)
-	if (special.shift || special.alt) search.newTab = true;
+	// override search.newTab if you're holding shift (or ctrl and alt, but there's no feedback for those...)
+	if (special.shift || special.ctrl || special.alt) search.newTab = true;
 	
 	if (search.box.value.length > 0) {
 		if (search.newTab) {
