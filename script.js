@@ -1,4 +1,5 @@
 var block;
+var background;
 var time;
 var search;
 var bookmark;
@@ -13,6 +14,12 @@ function setup() {
 	// Block
 	block = document.getElementById("block");
 	window.addEventListener("beforeunload", fadeout);
+	
+	// background
+	background = document.getElementById("background");
+	
+	// better code later
+	background.className = "random" + (Math.floor(Math.random() * 2) + 1);
 	
 	// Time
 	time = {
@@ -100,7 +107,6 @@ function updateSearch() {
 		search.button.className = "on";
 	} else {
 		search.button.className = "off";
-		search.newTab = false;
 	}
 	
 	if (search.newTab || special.shift) {
