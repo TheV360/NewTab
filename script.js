@@ -2,15 +2,19 @@ var block;
 var time;
 var search;
 var bookmark;
+var special;
 
 window.addEventListener("load", setup);
 
 function setup() {
+	// Clean text nodes
+	clean(document.getElementById("window"));
+	
+	// Block
 	block = document.getElementById("block");
 	window.addEventListener("beforeunload", fadeout);
 	
-	clean(document.getElementById("window"));
-	
+	// Time
 	time = {
 		parent: document.getElementById("timedate"),
 		hour: document.getElementById("hour"),
@@ -19,8 +23,7 @@ function setup() {
 		suffix: document.getElementById("suffix")
 	};
 	
-	updateTime();
-	
+	// Search
 	search = {
 		parent: document.getElementById("search"),
 		box: document.getElementById("searchbox"),
@@ -28,17 +31,30 @@ function setup() {
 		newTab: false
 	};
 	
-	updateSearch();
-	
 	search.button.addEventListener("mousedown", altSearch);
 	search.parent.addEventListener("submit", goSearch);
 	search.box.addEventListener("input", updateSearch);
 	
+	// Bookmark
 	bookmark = document.querySelectorAll(".icon a");
 	
 	/*bookmark.forEach(function(bookmarkItem) {
 		bookmarkItem.addEventListener("click", getBookmark(bookmarkItem));
 	});*/
+	
+	// Special keys
+	special = {
+		shift: false,
+		ctrl: false,
+		alt: false
+	}
+	
+	document.addEventListener("keydown", updateSpecial);
+	document.addEventListener("keyup", updateSpecial);
+	
+	// Everything's good to go!
+	updateTime();
+	updateSearch();
 }
 
 function fadeout() {
@@ -87,15 +103,28 @@ function updateSearch() {
 		search.newTab = false;
 	}
 	
-	if (search.newTab) {
-		search.button.value = "▷";
+	if (search.newTab || special.shift) {
+		search.button.value = "\u25B7";
+		search.button.title = "Search in new tab";
 	} else {
-		search.button.value = "▶";
+		search.button.value = "\u25B6";
+		search.button.title = "Search";
 	}
+}
+
+function updateSpecial(event) {
+	special.shift = event.shiftKey;
+	special.ctrl = event.ctrlKey;
+	special.alt = event.altKey;
+	
+	updateSearch();
 }
 
 function goSearch(event) {
 	var searchURL = "https://google.com/search?q=" + encodeURI(search.box.value);
+	
+	// override search.newTab if you're holding shift (or alt, but there's no feedback for it...)
+	if (special.shift || special.alt) search.newTab = true;
 	
 	if (search.box.value.length > 0) {
 		if (search.newTab) {
@@ -108,6 +137,9 @@ function goSearch(event) {
 	return true;
 }
 
+// I wrote this function name before knowing that holding alt and searching
+// will result in a new tab! That's sorta neat. Unfortunately, I have to use shift...
+// Thanks for reading my source code. I hope you tolerate it...
 function altSearch(event) {
 	if (search.box.value.length > 0 && event.which == 2) {
 		search.newTab = !search.newTab;
