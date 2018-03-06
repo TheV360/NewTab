@@ -183,15 +183,15 @@ html {
 #searchbutton {
 	width: 2rem;
 	
-	transition: color ease-out .5s;
+	transition: opacity ease-out .5s;
 }
 
 #searchbutton.on {
-	color: white;
+	opacity: 1;
 }
 
 #searchbutton.off {
-	color: #2f2f2f;
+	opacity: 0;
 }
 
 .icons, .icon {

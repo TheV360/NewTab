@@ -25,11 +25,13 @@ function setup() {
 	search = {
 		parent: document.getElementById("search"),
 		box: document.getElementById("searchbox"),
-		button: document.getElementById("searchbutton")
+		button: document.getElementById("searchbutton"),
+		newTab: false
 	};
 	
 	updateSearch();
 	
+	search.button.addEventListener("mousedown", altSearch);
 	search.parent.addEventListener("submit", goSearch);
 	search.box.addEventListener("input", updateSearch);
 	
@@ -82,20 +84,42 @@ function updateTime() {
 }
 
 function updateSearch() {
+	//Very dumb code, but...
 	if (search.box.value.length > 0) {
 		search.button.className = "on";
 	} else {
 		search.button.className = "off";
+		search.newTab = false;
+	}
+	
+	if (search.newTab) {
+		search.button.value = "▷";
+	} else {
+		search.button.value = "▶";
 	}
 }
 
-function goSearch() {
+function goSearch(event) {
+	var searchURL = "https://google.com/search?q=" + encodeURI(search.box.value);
+	
 	if (search.box.value.length > 0) {
-		//fadeout();
-		window.setTimeout(function() { location.assign("https://google.com/search?q=" + encodeURI(search.box.value)); }, 500);
+		if (search.newTab) {
+			window.open(searchURL);
+		} else {
+			location.assign(searchURL);
+		}
 	}
 	
 	return true;
+}
+
+function altSearch(event) {
+	if (search.box.value.length > 0) {
+		if (event.which == 2) {
+			search.newTab = !search.newTab;
+			updateSearch();
+		}
+	}
 }
 
 /*function goBookmark() {
