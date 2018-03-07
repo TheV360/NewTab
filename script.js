@@ -82,7 +82,7 @@ function setup() {
 		day: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
 		month: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
 		enabled: false,
-		short: true
+		long: false
 	};
 	
 	// Search
@@ -136,7 +136,7 @@ function toggleStorage(item, toggles, step = 1) {
 		
 		console.log("result: " + storage.getItem(item).toString());
 	} else {
-		storage.setItem(item, !(storage.getItem(item) === "true"));
+		storage.setItem(item, (storage.getItem(item) !== "true").toString());
 		
 		console.log("result: " + storage.getItem(item).toString());
 	}
@@ -150,6 +150,13 @@ function toggleTheme() {
 
 function toggleDate() {
 	toggleStorage("date");
+	
+	updateStorage();
+	updateSearch();
+}
+
+function toggleLongDate() {
+	toggleStorage("longdate");
 	
 	updateStorage();
 	updateSearch();
@@ -169,6 +176,7 @@ function toggleDate() {
 function updateStorage() {
 	document.documentElement.className = storage.getItem("theme");
 	date.enabled = storage.getItem("date") === "true";
+	date.long = storage.getItem("longdate") === "true";
 }
 
 function updateDateTime() {
@@ -209,10 +217,10 @@ function updateDateTime() {
 		time.parent.className = "on";
 		search.box.title = "Click to Search";
 		
-		if (date.short) {
-			search.box.placeholder = now.getFullYear() + "/" + now.getMonth() + "/" + now.getDate();
-		} else {
+		if (date.long) {
 			search.box.placeholder = date.day[now.getDay()] + ", " + date.month[now.getMonth()] + " " + now.getDate() + ", " + now.getFullYear();
+		} else {
+			search.box.placeholder = now.getFullYear() + "/" + (now.getMonth() + 1) + "/" + now.getDate();
 		}
 	} else {
 		time.parent.className = "";
