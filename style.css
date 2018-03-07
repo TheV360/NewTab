@@ -14,10 +14,6 @@
 	z-index: 4;
 }
 
-html {
-	cursor: default;
-}
-
 input, button {
 	margin: 0;
 	border: 0;
@@ -165,6 +161,8 @@ html, body, #window {
 }
 
 html {
+	cursor: default;
+	
 	font-size: 16px;
 	
 	background-color: black;
@@ -494,12 +492,6 @@ a, a *, *:link, *:link * {
 	transition: all ease-in-out var(--animation-icon);
 }
 
-use {
-	cursor: pointer;
-	
-	text-decoration: none;
-}
-
 .iconbox:hover {
 	margin: 0;
 	width: 7rem;
@@ -539,6 +531,12 @@ use {
 }
 
 /* SVG Helper Styles */
+
+svg, use {
+	cursor: pointer;
+	
+	text-decoration: none;
+}
 
 .svg-ii { stroke: inherit; fill: inherit; }
 .svg-tt { stroke: transparent; fill: transparent; }
@@ -604,6 +602,18 @@ use {
 	.icons {
 		grid-template-columns: repeat(3, 1fr);
 	}
+	
+	@media (max-height: 38rem) {
+		html {
+			font-size: calc(100vmax / 39);
+		}
+	}
+
+	@media (max-width: 23rem) {
+		html {
+			font-size: calc(100vmin / 24);
+		}
+	}
 }
 
 @media (orientation: landscape) {
@@ -614,5 +624,17 @@ use {
 	
 	.icons {
 		grid-template-columns: repeat(6, 1fr);
+	}
+	
+	@media (max-height: 24rem) {
+		html {
+			font-size: calc(100vmin / 25);
+		}
+	}
+
+	@media (max-width: 44rem) {
+		html {
+			font-size: calc(100vmax / 45);
+		}
 	}
 }
