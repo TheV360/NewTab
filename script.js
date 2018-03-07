@@ -3,6 +3,7 @@ var storage;
 var background;
 var header;
 var time;
+var date;
 var search;
 var bookmark;
 var special;
@@ -30,6 +31,7 @@ function setup() {
 		customize: document.getElementById("customize")
 	};
 	header.clock.addEventListener("click", toggleTheme);
+	header.customize.addEventListener("click", toggleDate);
 	
 	// Time
 	time = {
@@ -37,7 +39,16 @@ function setup() {
 		hour: document.getElementById("hour"),
 		blink: document.getElementById("blink"),
 		minute: document.getElementById("minute"),
-		suffix: document.getElementById("suffix")
+		second: document.getElementById("second"),
+		suffix: document.getElementById("suffix"),
+		seconds: false,
+		military: false
+	};
+	date = {
+		day: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+		month: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+		enabled: false,
+		short: true
 	};
 	
 	// Search
@@ -71,7 +82,7 @@ function setup() {
 	
 	// Everything's good to go!
 	updateStorage();
-	updateTime();
+	updateDateTime();
 	updateSearch();
 }
 
@@ -79,14 +90,35 @@ function fadeout() {
 	block.className = "fadeout";
 }
 
-function toggleTheme() {
-	if (storage.getItem("theme") == "white") {
-		storage.setItem("theme", "");
+function toggleStorage(item, toggles, step = 1) {
+	var value;
+	
+	value = storage.getItem(item);
+	
+	if (toggles) {
+		var index;
+		
+		storage.setItem(item, toggles[mod(toggles.indexOf(value) + step, toggles.length)]);
+		
+		console.log("result: " + storage.getItem(item).toString());
 	} else {
-		storage.setItem("theme", "white");
+		storage.setItem(item, !(storage.getItem(item) === "true"));
+		
+		console.log("result: " + storage.getItem(item).toString());
 	}
 	
 	updateStorage();
+}
+
+function toggleTheme() {
+	toggleStorage("theme", ["", "white", "red", "green", "blue"]);
+}
+
+function toggleDate() {
+	toggleStorage("date");
+	
+	updateStorage();
+	updateSearch();
 }
 
 /*function getBookmark(bookmarkItem) {
@@ -102,14 +134,19 @@ function toggleTheme() {
 
 function updateStorage() {
 	document.documentElement.className = storage.getItem("theme");
+	date.enabled = storage.getItem("date") === "true";
 }
 
-function updateTime() {
+function updateDateTime() {
 	var now = new Date();
 	
-	time.hour.innerHTML = mod((now.getHours() - 1), 12) + 1;
+	if (time.military) {
+		time.hour.innerHTML = now.getHours();
+	} else {
+		time.hour.innerHTML = mod((now.getHours() - 1), 12) + 1;
+	}
 	
-	if (now.getSeconds() % 2 > 0) {
+	if (now.getSeconds() % 2 > 0 && !time.seconds) {
 		time.blink.className = "off";
 	} else {
 		time.blink.className = "on";
@@ -117,13 +154,39 @@ function updateTime() {
 	
 	time.minute.innerHTML = ("0" + now.getMinutes()).slice(-2);
 	
-	if (now.getHours() < 12) {
-		time.suffix.innerHTML = " AM";
+	if (time.seconds) {
+		time.second.className = "on";
+		time.second.innerHTML = ":" + ("0" + now.getSeconds()).slice(-2);
 	} else {
-		time.suffix.innerHTML = " PM";
+		time.second.className = "off";
 	}
 	
-	window.setTimeout(updateTime, 100);
+	if (time.military) {
+		time.suffix.innerHTML = "";
+	} else {
+		if (now.getHours() < 12) {
+			time.suffix.innerHTML = " AM";
+		} else {
+			time.suffix.innerHTML = " PM";
+		}
+	}
+	
+	if (date.enabled) {
+		time.parent.className = "on";
+		search.box.title = "Click to Search";
+		
+		if (date.short) {
+			search.box.placeholder = now.getFullYear() + "/" + now.getMonth() + "/" + now.getDate();
+		} else {
+			search.box.placeholder = date.day[now.getDay()] + ", " + date.month[now.getMonth()] + " " + now.getDate() + ", " + now.getFullYear();
+		}
+	} else {
+		time.parent.className = "";
+		search.box.title = "";
+		search.box.placeholder = "Search";
+	}
+	
+	window.setTimeout(updateDateTime, 100);
 }
 
 function updateSearch() {
@@ -140,9 +203,13 @@ function updateSearch() {
 		search.box.className = "on";
 		search.button.className = "on";
 	} else {
-		search.box.className = "";
+		search.box.className = "off";
 		search.button.className = "off";
 		search.button.title = "";
+	}
+	
+	if (date.enabled) {
+		search.box.className += " date";
 	}
 }
 
