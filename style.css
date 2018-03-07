@@ -314,6 +314,11 @@ a, a *, *:link, *:link * {
 	background-size: cover;
 }
 
+#background.random3 {
+	background: url("background3.jpeg") no-repeat center center fixed;
+	background-size: cover;
+}
+
 /* Window */
 
 #window {

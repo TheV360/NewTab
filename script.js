@@ -23,7 +23,7 @@ function setup() {
 	
 	// Background
 	background = document.getElementById("background");
-	background.className = "random" + (Math.floor(Math.random() * 2) + 1);
+	background.className = "random" + (Math.floor(Math.random() * 3) + 1);
 	
 	// Header
 	header = {
