@@ -2,6 +2,7 @@ var block;
 var storage;
 var background;
 var header;
+var customize;
 var time;
 var date;
 var search;
@@ -32,6 +33,39 @@ function setup() {
 	};
 	header.clock.addEventListener("click", toggleTheme);
 	header.customize.addEventListener("click", toggleDate);
+	
+	// Customize
+	/*customize = {
+		back: document.getElementById("back"),
+		color: {
+			"fade-in",
+			"fade-out",
+			
+			"animation",
+			"animation-icon",
+			
+			"select-text",
+			"select-background",
+			
+			"header-text",
+			"header-background",
+			"header-thin",
+			"header-input",
+			"header-focus",
+			
+			"content-text",
+			"content-background",
+			"content-timedate",
+			"content-search",
+			"content-search-hover",
+			"content-search-focus",
+			"content-placeholder",
+			
+			"icon-color",
+			"icon-background",
+			"icon-background-hover"
+		}
+	};*/
 	
 	// Time
 	time = {
