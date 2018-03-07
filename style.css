@@ -602,16 +602,16 @@ svg, use {
 	.icons {
 		grid-template-columns: repeat(3, 1fr);
 	}
-	
-	@media (max-height: 38rem) {
-		html {
-			font-size: calc(100vmax / 39);
-		}
-	}
 
 	@media (max-width: 23rem) {
 		html {
 			font-size: calc(100vmin / 24);
+		}
+	}
+	
+	@media (max-height: 38rem) {
+		html {
+			font-size: calc(100vmax / 39);
 		}
 	}
 }
