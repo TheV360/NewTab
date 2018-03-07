@@ -587,12 +587,6 @@ svg, use {
 
 /* Media Styles */
 
-@media (max-width: 44rem) and (max-height: 38rem) {
-	html {
-		font-size: calc(100vmin / 44);
-	}
-}
-
 @media (orientation: portrait) {
 	.content {
 		max-width: 23rem;
@@ -601,18 +595,6 @@ svg, use {
 	
 	.icons {
 		grid-template-columns: repeat(3, 1fr);
-	}
-
-	@media (max-width: 23rem) {
-		html {
-			font-size: calc(100vmin / 24);
-		}
-	}
-	
-	@media (max-height: 38rem) {
-		html {
-			font-size: calc(100vmax / 39);
-		}
 	}
 }
 
@@ -624,17 +606,5 @@ svg, use {
 	
 	.icons {
 		grid-template-columns: repeat(6, 1fr);
-	}
-	
-	@media (max-height: 24rem) {
-		html {
-			font-size: calc(100vmin / 25);
-		}
-	}
-
-	@media (max-width: 44rem) {
-		html {
-			font-size: calc(100vmax / 45);
-		}
 	}
 }
