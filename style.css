@@ -159,7 +159,7 @@ input[type="search"]:focus::-webkit-search-cancel-button:active {
 
 /* Elements */
 
-html, body, .center {
+html, body, #window {
 	width: 100%;
 	height: 100%;
 }
@@ -250,6 +250,17 @@ a, a *, *:link, *:link * {
 	cursor: pointer;
 }
 
+/* Customization Window */
+#custom {
+	display: none;
+	position: fixed;
+	top: 0; left: 0;
+	width: 100%;
+	height: 100%;
+	
+	z-index: 4;
+}
+
 /* Block & Its Animations */
 
 #block {
@@ -323,14 +334,9 @@ a, a *, *:link, *:link * {
 
 #window {
 	position: fixed;
-	top: 0; left: 0;
-	
-	z-index: 2;
-}
-
-.center {
 	display: flex;
 	flex-flow: row wrap;
+	top: 0; left: 0;
 	
 	justify-content: center;
 	align-items: center;
@@ -574,6 +580,11 @@ use {
 #github.iconbox:hover {
 	background-color: #191717;
 	fill: #191717;
+}
+
+#svg1.iconbox:hover {
+	background-color: #51a8e3;
+	fill: #51a8e3;
 }
 
 /* Media Styles */
