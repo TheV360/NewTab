@@ -16,5 +16,5 @@
 # Future plans
 * Customizable icons
 * Customizable random background
-* Good CSS
+* Refactor everything, it looks good but it's impossible to style.
 * Clock mode: nothing but the time in the center of the screen.

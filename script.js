@@ -32,27 +32,37 @@ function setup() {
 		customize: document.getElementById("customize")
 	};
 	header.clock.addEventListener("click", toggleTheme);
-	header.customize.addEventListener("click", toggleDate);
+	header.customize.addEventListener("click", toggleMenu);
 	
 	// Customize
 	/*customize = {
 		back: document.getElementById("back"),
-		color: {
-			"fade-in",
-			"fade-out",
+		color: [
+			{
+				name: "Fade",
+				variables: [
+					"fade-in",
+					"fade-out",
+				]
+			},
 			
-			"animation",
-			"animation-icon",
+			{
+				name: "Selection",
+				variables: [
+					"select-text",
+					"select-background"
+				]
+			},
 			
-			"select-text",
-			"select-background",
-			
+			{
 			"header-text",
 			"header-background",
 			"header-thin",
 			"header-input",
 			"header-focus",
+			},
 			
+			{
 			"content-text",
 			"content-background",
 			"content-timedate",
@@ -60,12 +70,20 @@ function setup() {
 			"content-search-hover",
 			"content-search-focus",
 			"content-placeholder",
+			},
 			
+			{
 			"icon-color",
 			"icon-background",
 			"icon-background-hover"
-		}
+			}
+		]
 	};*/
+	customize = {
+		parent: document.getElementById("custom"),
+		back: document.getElementById("back"),
+	}
+	customize.back.addEventListener("click", toggleMenu);
 	
 	// Time
 	time = {
@@ -124,6 +142,18 @@ function fadeout() {
 	block.className = "fadeout";
 }
 
+function resetStorage(confirmed = false) {
+	if (confirmed || confirm("Reset customization settings to defaults?\nThis will delete all your custom CSS and it cannot be undone.")) {
+		storage.clear();
+	}
+}
+
+function toggleClass(element, toggle = "on") {
+	if (element.className.indexOf(toggle) >= 0) {
+		
+	}
+}
+
 function toggleStorage(item, toggles, step = 1) {
 	var value;
 	
@@ -132,20 +162,31 @@ function toggleStorage(item, toggles, step = 1) {
 	if (toggles) {
 		var index;
 		
+		if (value === null) value = "";
+		
 		storage.setItem(item, toggles[mod(toggles.indexOf(value) + step, toggles.length)]);
-		
-		console.log("result: " + storage.getItem(item).toString());
 	} else {
-		storage.setItem(item, (storage.getItem(item) !== "true").toString());
+		if (value === null) value = "false";
 		
-		console.log("result: " + storage.getItem(item).toString());
+		storage.setItem(item, (storage.getItem(item) !== "true").toString());
 	}
 	
 	updateStorage();
 }
 
 function toggleTheme() {
-	toggleStorage("theme", ["", "white", "red", "green", "blue"]);
+	toggleStorage("theme", ["", "white", "red", "yellow", "green", "cyan", "blue", "purple", "custom"]);
+}
+
+function toggleMenu() {
+	if (document.getElementById("custom").className === "") {
+		document.getElementById("custom").className = "on";
+	} else {
+		document.getElementById("custom").className = "";
+	}
+	
+	updateStorage();
+	updateSearch();
 }
 
 function toggleDate() {
@@ -160,6 +201,10 @@ function toggleLongDate() {
 	
 	updateStorage();
 	updateSearch();
+}
+
+function addCSSVariable(name, value) {
+	
 }
 
 /*function getBookmark(bookmarkItem) {
@@ -177,6 +222,10 @@ function updateStorage() {
 	document.documentElement.className = storage.getItem("theme");
 	date.enabled = storage.getItem("date") === "true";
 	date.long = storage.getItem("longdate") === "true";
+}
+
+function updateTheme() {
+	
 }
 
 function updateDateTime() {

@@ -65,6 +65,7 @@ input, button {
 	--header-background: #afafaf;
 	--header-thin: #3f3f3f;
 	--header-input: #dfdfdf;
+	--header-focus: #7f7f7f;
 	
 	--content-text: black;
 	--content-background: #dfdfdf;
@@ -81,14 +82,67 @@ input, button {
 
 :root.red {
 	--header-background: #8e2f2f;
+	--header-input: #461717;
+	--header-focus: #bf4040;
+}
+
+:root.yellow {
+	--header-background: #8e8e2f;
+	--header-input: #464617;
+	--header-focus: #bfbf40;
 }
 
 :root.green {
 	--header-background: #2f8e2f;
+	--header-input: #174617;
+	--header-focus: #40bf40;
+}
+
+:root.cyan {
+	--header-background: #2f8e8e;
+	--header-input: #174646;
+	--header-focus: #40bfbf;
 }
 
 :root.blue {
 	--header-background: #2f2f8e;
+	--header-input: #171746;
+	--header-focus: #4040bf;
+}
+
+:root.purple {
+	--header-background: #8e2f8e;
+	--header-input: #461746;
+	--header-focus: #bf40bf;
+}
+
+:root.custom {
+	--fade-in: black;
+	--fade-out: black;
+	
+	--animation: .2s;
+	--animation-icon: var(--animation);
+	
+	--select-text: white;
+	--select-background: black;
+	
+	--header-text: black;
+	--header-background: #8e8e2f;
+	--header-thin: #3f3f3f;
+	--header-input: #464617;
+	--header-focus: #bfbf40;
+	
+	--content-text: white;
+	--content-background: #2f2f2f;
+	--content-timedate: #5f5f5f;
+	--content-search: #2f2f2f;
+	--content-search-hover: #3f3f3f;
+	--content-search-focus: #5f5f5f;
+	--content-placeholder: #7f7f7f;
+	
+	--icon-color: white;
+	--icon-background: #3f3f3f;
+	--icon-background-hover: #5f5f5f;
 }
 
 /* Weird stuff */
@@ -250,13 +304,46 @@ a, a *, *:link, *:link * {
 
 /* Customization Window */
 #custom {
-	display: none;
 	position: fixed;
-	top: 0; left: 0;
+	display: flex;
+	flex-flow: row wrap;
+	top: -100%; left: 0;
 	width: 100%;
 	height: 100%;
 	
+	justify-content: center;
+	align-items: center;
+	
 	z-index: 4;
+	
+	transition: opacity var(--animation), top var(--animation);
+	opacity: 0;
+}
+
+#custom.on {
+	top: 0;
+	
+	opacity: 1;
+}
+
+#customcontent {
+	position: relative;
+	top: 0; left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 1rem;
+	
+	max-width: 32rem;
+	max-height: 32rem;
+	
+	color: var(--content-text);
+	background-color: var(--content-background);
+	
+	box-shadow: 0px 0px 8px black;
+}
+
+hr {
+	height: 1px;
 }
 
 /* Block & Its Animations */
