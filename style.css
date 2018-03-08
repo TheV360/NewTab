@@ -308,7 +308,6 @@ article {
 	top: 0; left: 0;
 	width: 100%;
 	height: 100%;
-	padding: 1rem;
 	
 	max-width: 32rem;
 	max-height: 32rem;
@@ -317,6 +316,29 @@ article {
 	background-color: var(--content-background);
 	
 	box-shadow: 0px 0px 8px black;
+}
+
+#customize-content header {
+	text-align: left;
+}
+
+#customize span {
+	display: inline-block;
+	width: calc(100% - 2rem);
+	
+	text-align: left;
+}
+
+#customize-back {
+	width: 2rem;
+	height: 2rem;
+	
+	color: var(--content-text);
+	background-color: var(--header-input);
+}
+
+#customize-back:focus {
+	background-color: var(--header-focus);
 }
 
 hr {

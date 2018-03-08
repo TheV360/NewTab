@@ -108,7 +108,7 @@ function setup() {
 		parent: document.getElementById("search"),
 		box: document.getElementById("search-box"),
 		button: document.getElementById("search-submit"),
-		newTab: false
+		new: false
 	};
 	
 	search.button.addEventListener("mousedown", altSearch);
@@ -177,10 +177,10 @@ function toggleTheme() {
 }
 
 function toggleMenu() {
-	if (document.getElementById("custom").className === "") {
-		document.getElementById("custom").className = "on";
+	if (document.getElementById("customize").className === "") {
+		document.getElementById("customize").className = "on";
 	} else {
-		document.getElementById("custom").className = "";
+		document.getElementById("customize").className = "";
 	}
 	
 	updateStorage();
@@ -280,7 +280,7 @@ function updateDateTime() {
 
 function updateSearch() {
 	//Very dumb code, but...
-	if (search.newTab || special.shift) {
+	if (search.new || special.shift) {
 		search.button.value = "\u25B7";
 		search.button.title = "Search in new tab";
 	} else {
@@ -313,11 +313,11 @@ function updateSpecial(event) {
 function goSearch(event) {
 	var searchURL = "https://google.com/search?q=" + encodeURI(search.box.value);
 	
-	// override search.newTab if you're holding shift (or ctrl and alt, but there's no feedback for those...)
-	if (special.shift || special.ctrl || special.alt) search.newTab = true;
+	// override search.new if you're holding shift (or ctrl and alt, but there's no feedback for those...)
+	if (special.shift || special.ctrl || special.alt) search.new = true;
 	
 	if (search.box.value.length > 0) {
-		if (search.newTab) {
+		if (search.new) {
 			window.open(searchURL);
 		} else {
 			location.assign(searchURL);
@@ -332,7 +332,7 @@ function goSearch(event) {
 // Thanks for reading my source code. I hope you tolerate it...
 function altSearch(event) {
 	if (search.box.value.length > 0 && event.which == 2) {
-		search.newTab = !search.newTab;
+		search.new = !search.new;
 		updateSearch();
 	}
 }
