@@ -13,7 +13,7 @@ window.addEventListener("load", setup);
 
 function setup() {
 	// Clean text nodes
-	clean(document.getElementById("window"));
+	clean(document.body);
 	
 	// Block
 	block = document.getElementById("block");
