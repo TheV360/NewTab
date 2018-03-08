@@ -309,11 +309,11 @@ button svg {
 }
 
 button:hover {
-	background-color: var(--content-search-hover);
+	background-color: var(--button-hover);
 }
 
 button:focus {
-	background-color: var(--content-search-focus);
+	background-color: var(--button-focus);
 }
 
 /* Customization Window */
@@ -330,14 +330,11 @@ button:focus {
 	
 	z-index: 3;
 	
-	transition: opacity var(--animation), top var(--animation);
-	opacity: 0;
+	transition: top var(--animation);
 }
 
 #customize.on {
 	top: 0;
-	
-	opacity: 1;
 }
 
 #customize-content {
@@ -357,14 +354,15 @@ button:focus {
 
 #customize-header {
 	display: block;
-}
-
-#customize-content header {
 	text-align: left;
 }
 
+#customize-content header {
+}
+
 #customize span {
-	display: inline-block;
+	float: left;
+	
 	width: calc(100% - 2rem);
 	
 	text-align: left;
@@ -373,14 +371,14 @@ button:focus {
 }
 
 #customize-tabs {
-	display: inline-block;
+	float: right;
 	
 	width: 8rem;
 	height: calc(100% - 3rem);
 }
 
-#customize-tabs > * {
-	display: block;
+#customize-tabs ul {
+	list-style-type: none;
 }
 
 #customize-tabcontent {
@@ -509,21 +507,11 @@ hr {
 	transition: opacity ease-out var(--animation);
 }
 
-#time-blink.off {
-	opacity: 0;
-}
+#time-blink.off { opacity: 0; }
+#time-blink.on { opacity: 1; }
 
-#time-blink.on {
-	opacity: 1;
-}
-
-#time-second {
-	display: none;
-}
-
-#time-second.on {
-	display: initial;
-}
+#time-second { display: none; }
+#time-second.on { display: initial; }
 
 /* Search Box */
 
@@ -557,13 +545,8 @@ hr {
 	text-align: center;
 }
 
-#search-box.off.date::placeholder {
-	color: var(--content-timedate);
-}
-
-#search-box.off.date:focus::placeholder {
-	opacity: 0;
-}
+#search-box.off.date::placeholder { color: var(--content-timedate); }
+#search-box.off.date:focus::placeholder { opacity: 0; }
 
 #search-box.on, #search-box:focus {
 	padding: 0 2.5rem 0 .5rem;
@@ -588,13 +571,8 @@ hr {
 	transition: opacity ease-out var(--animation);
 }
 
-#search-submit.on {
-	opacity: 1;
-}
-
-#search-submit.off {
-	opacity: 0;
-}
+#search-submit.on { opacity: 1; }
+#search-submit.off { opacity: 0; }
 
 /* Icons */
 
@@ -663,40 +641,12 @@ svg, use {
 
 /* Link-specific Styles (REMOVE SOON) */
 
-#youtube.iconbox:hover {
-	background-color: #ff0000;
-	fill: #ff0000;
-}
-
-#twitter.iconbox:hover {
-	background-color: #1da1f2;
-	fill: #1da1f2;
-}
-
-#reddit.iconbox:hover {
-	background-color: #ff4500;
-	fill: #ff4500;
-}
-
-#tumblr.iconbox:hover {
-	background-color: #36465d;
-	fill: #36465d;
-}
-
-#smilebasicsource.iconbox:hover {
-	background-color: #009688;
-	fill: #009688;
-}
-
-#github.iconbox:hover {
-	background-color: #191717;
-	fill: #191717;
-}
-
-#svg1.iconbox:hover {
-	background-color: #51a8e3;
-	fill: #51a8e3;
-}
+#youtube.iconbox:hover { background-color: #ff0000; fill: #ff0000; }
+#twitter.iconbox:hover { background-color: #1da1f2; fill: #1da1f2; }
+#reddit.iconbox:hover { background-color: #ff4500; fill: #ff4500; }
+#tumblr.iconbox:hover { background-color: #36465d; fill: #36465d; }
+#smilebasicsource.iconbox:hover { background-color: #009688; fill: #009688; }
+#github.iconbox:hover { background-color: #191717; fill: #191717; }
 
 /* Media Styles */
 
@@ -719,5 +669,12 @@ svg, use {
 	
 	#icons {
 		grid-template-columns: repeat(6, 1fr);
+	}
+}
+
+/* Temporary */
+@media (max-width: 44rem) or (max-height: 38rem) {
+	html {
+		font-size: 50%;
 	}
 }
