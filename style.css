@@ -14,6 +14,10 @@
 	z-index: 4;
 }
 
+a, a *, *:link, *:link * {
+	cursor: pointer;
+}
+
 input, button {
 	margin: 0;
 	border: 0;
@@ -244,23 +248,6 @@ header span {
 	vertical-align: top;
 }
 
-header em {
-	color: var(--header-thin);
-	
-	font-style: normal;
-	font-weight: lighter;
-}
-
-header a, header a:link, header a:visited {
-	color: inherit;
-	text-decoration: none;
-}
-
-header a:hover {
-	color: inherit;
-	border-bottom: 1px solid;
-}
-
 header button {
 	width: 2rem;
 	height: 2rem;
@@ -290,16 +277,6 @@ article {
 	padding: 1rem;
 	width: 100%;
 	height: calc(100% - 3rem);
-}
-
-br {
-	display: block;
-	width: 100%;
-	height: 1px;
-}
-
-a, a *, *:link, *:link * {
-	cursor: pointer;
 }
 
 /* Customization Window */
@@ -429,7 +406,7 @@ hr {
 	z-index: 2;
 }
 
-.content {
+#window-content {
 	position: relative;
 	top: 0; left: 0;
 	margin: 1rem;
@@ -446,7 +423,7 @@ hr {
 
 /* Time Display */
 
-#timedate {
+#time {
 	padding-bottom: .5rem;
 	height: 2.5rem;
 	
@@ -457,29 +434,29 @@ hr {
 	text-align: center;
 }
 
-#timedate #time #blink {
+#time-blink {
 	transition: opacity ease-out var(--animation);
 }
 
-#timedate #time #blink.off {
+#time-blink.off {
 	opacity: 0;
 }
 
-#timedate #time #blink.on {
+#time-blink.on {
 	opacity: 1;
 }
 
-#timedate #time #second {
+#time-second {
 	display: none;
 }
 
-#timedate #time #second.on {
+#time-second.on {
 	display: initial;
 }
 
 /* Search Box */
 
-#search, #searchbox, #searchbutton {
+#search, #search-box, #search-submit {
 	height: 2rem;
 	
 	color: var(--content-text);
@@ -500,7 +477,7 @@ hr {
 	width: 100%;
 }
 
-#searchbox {
+#search-box {
 	cursor: text;
 	
 	padding: 0 .5rem;
@@ -509,29 +486,29 @@ hr {
 	text-align: center;
 }
 
-#searchbox.off.date::placeholder {
+#search-box.off.date::placeholder {
 	color: var(--content-timedate);
 }
 
-#searchbox.off.date:focus::placeholder {
+#search-box.off.date:focus::placeholder {
 	opacity: 0;
 }
 
-#searchbox.on, #searchbox:focus {
+#search-box.on, #search-box:focus {
 	padding: 0 2.5rem 0 .5rem;
 	
 	text-align: left;
 }
 
-#searchbox:hover, #searchbutton:hover:not(.off) {
+#search-box:hover, #search-submit:hover:not(.off) {
 	background-color: var(--content-search-hover);
 }
 
-#searchbox:focus, #searchbutton:active {
+#search-box:focus, #search-submit:active {
 	background-color: var(--content-search-focus);
 }
 
-#searchbutton {
+#search-submit {
 	position: absolute;
 	right: .5rem;
 	
@@ -540,21 +517,21 @@ hr {
 	transition: opacity ease-out var(--animation);
 }
 
-#searchbutton.on {
+#search-submit.on {
 	opacity: 1;
 }
 
-#searchbutton.off {
+#search-submit.off {
 	opacity: 0;
 }
 
 /* Icons */
 
-.icons, .icon {
+#icons, .icon {
 	display: grid;
 }
 
-.icons {
+#icons {
 	grid-column-gap: 0;
 }
 
@@ -593,28 +570,6 @@ hr {
 	width: 100%;
 	height: 100%;
 	padding: .75rem;
-}
-
-.iconbox .fas, .iconbox .fab {
-	display: block;
-	margin: .5rem;
-	
-	font-size: 5rem;
-	line-height: 6rem;
-	text-align: center;
-	text-decoration: none;
-	
-	color: var(--icon-color);
-	
-	transition: font-size ease-in-out var(--animation-icon);
-}
-
-.iconbox:hover .fas, .iconbox:hover .fab {
-	display: block;
-	margin: 0;
-	
-	font-size: 6rem;
-	line-height: 7rem;
 }
 
 /* SVG Helper Styles */
@@ -675,23 +630,23 @@ svg, use {
 /* Media Styles */
 
 @media (orientation: portrait) {
-	.content {
+	#window-content {
 		max-width: 23rem;
 		max-height: 38rem;
 	}
 	
-	.icons {
+	#icons {
 		grid-template-columns: repeat(3, 1fr);
 	}
 }
 
 @media (orientation: landscape) {
-	.content {
+	#window-content {
 		max-width: 44rem;
 		max-height: 24rem;
 	}
 	
-	.icons {
+	#icons {
 		grid-template-columns: repeat(6, 1fr);
 	}
 }

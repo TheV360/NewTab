@@ -28,8 +28,8 @@ function setup() {
 	
 	// Header
 	header = {
-		clock: document.getElementById("clock"),
-		customize: document.getElementById("customize")
+		clock: document.getElementById("header-clock"),
+		customize: document.getElementById("header-customize")
 	};
 	header.clock.addEventListener("click", toggleTheme);
 	header.customize.addEventListener("click", toggleMenu);
@@ -80,19 +80,19 @@ function setup() {
 		]
 	};*/
 	customize = {
-		parent: document.getElementById("custom"),
-		back: document.getElementById("back"),
+		parent: document.getElementById("customize"),
+		back: document.getElementById("customize-back"),
 	}
 	customize.back.addEventListener("click", toggleMenu);
 	
 	// Time
 	time = {
-		parent: document.getElementById("timedate"),
-		hour: document.getElementById("hour"),
-		blink: document.getElementById("blink"),
-		minute: document.getElementById("minute"),
-		second: document.getElementById("second"),
-		suffix: document.getElementById("suffix"),
+		parent: document.getElementById("time"),
+		hour: document.getElementById("time-hour"),
+		blink: document.getElementById("time-blink"),
+		minute: document.getElementById("time-minute"),
+		second: document.getElementById("time-second"),
+		suffix: document.getElementById("time-suffix"),
 		seconds: false,
 		military: false
 	};
@@ -106,8 +106,8 @@ function setup() {
 	// Search
 	search = {
 		parent: document.getElementById("search"),
-		box: document.getElementById("searchbox"),
-		button: document.getElementById("searchbutton"),
+		box: document.getElementById("search-box"),
+		button: document.getElementById("search-submit"),
 		newTab: false
 	};
 	
@@ -116,8 +116,6 @@ function setup() {
 	search.box.addEventListener("input", updateSearch);
 	
 	// Bookmark
-	bookmark = document.querySelectorAll(".icon a");
-	
 	/*bookmark.forEach(function(bookmarkItem) {
 		bookmarkItem.addEventListener("click", getBookmark(bookmarkItem));
 	});*/
