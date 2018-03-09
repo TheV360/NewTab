@@ -51,12 +51,16 @@ input, button {
 	
 	--content-text: white;
 	--content-background: #2f2f2f;
-	--content-timedate: #5f5f5f;
+	--content-time: #5f5f5f;
 	--content-search: var(--content-background);
 	--content-search-hover: var(--button-hover);
 	--content-search-focus: var(--button-focus);
 	--content-placeholder: #7f7f7f;
 	--content-divider: #5f5f5f;
+	
+	--customize-tab: #7f7f7f;
+	--customize-tab-hover: var(--content-text);
+	--customize-tab-focus: #cfcfcf;
 	
 	--icon-color: white;
 	--icon-background: #3f3f3f;
@@ -82,7 +86,7 @@ input, button {
 	
 	--content-text: black;
 	--content-background: #dfdfdf;
-	--content-timedate: #afafaf;
+	--content-time: #afafaf;
 	--content-search: var(--content-background);
 	--content-search-hover: var(--button-hover);
 	--content-search-focus: var(--button-focus);
@@ -155,7 +159,7 @@ input, button {
 	
 	--content-text: white;
 	--content-background: #2f2f2f;
-	--content-timedate: #5f5f5f;
+	--content-time: #5f5f5f;
 	--content-search: #2f2f2f;
 	--content-search-hover: #3f3f3f;
 	--content-search-focus: #5f5f5f;
@@ -228,6 +232,32 @@ input[type="search"]:focus::-webkit-search-cancel-button:active {
 	opacity: 1;
 }
 
+#customize-tabcontent::-webkit-scrollbar {
+	width: 1rem;
+}
+
+#customize-tabcontent::-webkit-scrollbar-button {
+	display: none;
+}
+
+#customize-tabcontent::-webkit-scrollbar-track {
+	background-color: var(--content-background);
+	
+	margin: .5rem 0;
+}
+
+#customize-tabcontent::-webkit-scrollbar-thumb {
+	background-color: var(--header-background);
+}
+
+#customize-tabcontent::-webkit-scrollbar-thumb:hover {
+	background-color: var(--header-button-focus);
+}
+
+#customize-tabcontent::-webkit-scrollbar-thumb:active {
+	background-color: var(--header-button);
+}
+
 /* Elements */
 
 html, body, #window {
@@ -288,6 +318,19 @@ header {
 	opacity: 1;
 }
 
+h1 {
+	margin-top: .5rem;
+	
+	font-size: 1.5rem;
+	font-weight: normal;
+	
+	color: var(--content-timedate);
+}
+
+h1:first-child {
+	margin-top: 0;
+}
+
 article {
 	padding: 1rem;
 	width: 100%;
@@ -305,6 +348,8 @@ button {
 }
 
 button svg {
+	display: block;
+	
 	width: 2rem;
 	height: 2rem;
 	padding: .5rem;
@@ -399,7 +444,9 @@ button:active {
 	padding-left: 0;
 	padding-right: .5rem;
 	
-	color: #7f7f7f;
+	color: var(--customize-tab);
+	
+	line-height: 1.5rem;
 	
 	-moz-user-select: none;
 	-webkit-user-select: none;
@@ -410,14 +457,14 @@ button:active {
 	padding-left: .5rem;
 	padding-right: 0;
 	
-	color: var(--content-text);
+	color: var(--customize-tab-hover);
 }
 
 #customize-tabs li.on {
 	padding-left: .5rem;
 	padding-right: 0;
 	
-	color: #cfcfcf;
+	color: var(--customize-tab-focus);
 }
 
 #customize-tabcontent {
@@ -426,6 +473,8 @@ button:active {
 	padding: .5rem;
 	width: 24rem;
 	height: calc(100% - 3rem);
+	
+	overflow-y: auto;
 }
 
 label {
