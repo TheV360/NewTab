@@ -651,9 +651,9 @@ svg, use {
 /* Media Styles */
 
 @media (orientation: portrait) {
-	@media (max-width: 640px), (max-height: 640px) {
+	@media (max-width: 528px), (max-height: 624px) {
 		html {
-			font-size: calc(100vmin / 40);
+			font-size: calc(100vmin / 39);
 		}
 	}
 	
@@ -668,7 +668,7 @@ svg, use {
 }
 
 @media (orientation: landscape) {
-	@media (max-width: 720px), (max-height: 720px) {
+	@media (max-width: 720px), (max-height: 528px) {
 		html {
 			font-size: calc(100vmin / 45);
 		}
