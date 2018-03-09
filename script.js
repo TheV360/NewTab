@@ -31,7 +31,6 @@ function setup() {
 		clock: document.getElementById("header-clock"),
 		customize: document.getElementById("header-customize")
 	};
-	header.clock.addEventListener("click", toggleTheme);
 	header.customize.addEventListener("click", toggleMenu);
 	
 	// Customize
@@ -82,8 +81,14 @@ function setup() {
 	customize = {
 		parent: document.getElementById("customize"),
 		back: document.getElementById("customize-back"),
+		theme: document.getElementById("customize-themetoggle"),
+		date: document.getElementById("customize-datetoggle"),
+		longdate: document.getElementById("customize-longdatetoggle")
 	}
 	customize.back.addEventListener("click", toggleMenu);
+	customize.theme.addEventListener("click", toggleTheme);
+	customize.date.addEventListener("click", checkbox(customize.date, toggleDate));
+	customize.longdate.addEventListener("click", checkbox(customize.longdate, toggleLongDate));
 	
 	// Time
 	time = {
@@ -140,6 +145,20 @@ function fadeout() {
 	block.className = "fadeout";
 }
 
+function checkbox(element, callback) {
+	return function() {
+		var result;
+		
+		result = callback();
+		
+		if (result) {
+			element.className = "";
+		} else {
+			element.className = "off";
+		}
+	}
+}
+
 function resetStorage(confirmed = false) {
 	if (confirmed || confirm("Reset customization settings to defaults?\nThis will delete all your custom CSS and it cannot be undone.")) {
 		storage.clear();
@@ -160,13 +179,15 @@ function toggleStorage(item, toggles, step = 1) {
 	if (toggles) {
 		var index;
 		
-		if (value === null) value = "";
+		if (value === null) value = toggles[0];
 		
 		storage.setItem(item, toggles[mod(toggles.indexOf(value) + step, toggles.length)]);
 	} else {
 		if (value === null) value = "false";
 		
 		storage.setItem(item, (storage.getItem(item) !== "true").toString());
+		
+		return value !== "true";
 	}
 	
 	updateStorage();
@@ -188,17 +209,25 @@ function toggleMenu() {
 }
 
 function toggleDate() {
-	toggleStorage("date");
+	var value;
+	
+	value = toggleStorage("date");
 	
 	updateStorage();
 	updateSearch();
+	
+	return value;
 }
 
 function toggleLongDate() {
-	toggleStorage("longdate");
+	var value;
+	
+	value = toggleStorage("longdate");
 	
 	updateStorage();
 	updateSearch();
+	
+	return value;
 }
 
 function addCSSVariable(name, value) {

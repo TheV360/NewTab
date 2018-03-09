@@ -56,6 +56,7 @@ input, button {
 	--content-search-hover: var(--button-hover);
 	--content-search-focus: var(--button-focus);
 	--content-placeholder: #7f7f7f;
+	--content-divider: #5f5f5f;
 	
 	--icon-color: white;
 	--icon-background: #3f3f3f;
@@ -86,6 +87,7 @@ input, button {
 	--content-search-hover: var(--button-hover);
 	--content-search-focus: var(--button-focus);
 	--content-placeholder: #7f7f7f;
+	--content-divider: #afafaf;
 	
 	--icon-color: black;
 	--icon-background: #cfcfcf;
@@ -274,11 +276,11 @@ header {
 	background-color: var(--header-button);
 }
 
-#window-header button:hover {
+#window-header button:hover, #customize-header button:hover {
 	background-color: var(--header-button-hover);
 }
 
-#window-header button:active {
+#window-header button:active, #customize-header button:active {
 	background-color: var(--header-button-focus);
 }
 
@@ -312,7 +314,7 @@ button:hover {
 	background-color: var(--button-hover);
 }
 
-button:focus {
+button:active {
 	background-color: var(--button-focus);
 }
 
@@ -337,6 +339,10 @@ button:focus {
 	top: 0;
 }
 
+#customize button.off svg {
+	fill: transparent;
+}
+
 #customize-content {
 	position: relative;
 	top: 0; left: 0;
@@ -357,11 +363,16 @@ button:focus {
 	text-align: left;
 }
 
-#customize-content header {
+#customize-header button {
+	width: 2rem;
+	height: 2rem;
+	
+	color: var(--header-text);
+	background-color: var(--header-button);
 }
 
 #customize span {
-	float: left;
+	display: inline-block;
 	
 	width: calc(100% - 2rem);
 	
@@ -371,8 +382,10 @@ button:focus {
 }
 
 #customize-tabs {
-	float: right;
+	float: left;
 	
+	border-right: solid 1px var(--content-divider);
+	padding: .5rem;
 	width: 8rem;
 	height: calc(100% - 3rem);
 }
@@ -381,11 +394,30 @@ button:focus {
 	list-style-type: none;
 }
 
+#customize-tabs li {
+	transition: padding-left var(--animation);
+	padding-left: 0;
+}
+
+#customize-tabs li:hover {
+	padding-left: .5rem;
+}
+
 #customize-tabcontent {
-	display: inline-block;
+	float: right;
 	
+	padding: .5rem;
 	width: 24rem;
 	height: calc(100% - 3rem);
+}
+
+label {
+	display: inline-block;
+	padding-left: .5rem;
+	height: 2rem;
+	
+	vertical-align: top;
+	line-height: 2rem;
 }
 
 hr {
