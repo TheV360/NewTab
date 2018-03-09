@@ -87,8 +87,8 @@ function setup() {
 	}
 	customize.back.addEventListener("click", toggleMenu);
 	customize.theme.addEventListener("click", toggleTheme);
-	customize.date.addEventListener("click", checkbox(customize.date, toggleDate));
-	customize.longdate.addEventListener("click", checkbox(customize.longdate, toggleLongDate));
+	customize.date.addEventListener("click", checkbox(customize.date, "date"));
+	customize.longdate.addEventListener("click", checkbox(customize.longdate, "longdate"));
 	
 	// Time
 	time = {
@@ -145,11 +145,19 @@ function fadeout() {
 	block.className = "fadeout";
 }
 
-function checkbox(element, callback) {
+function checkbox(element, item) {
+	var result;
+	
+	result = storage.getItem(item) === "true";
+	
+	if (result) {
+		element.className = "";
+	} else {
+		element.className = "off";
+	}
+	
 	return function() {
-		var result;
-		
-		result = callback();
+		result = toggleStorage(item);
 		
 		if (result) {
 			element.className = "";

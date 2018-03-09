@@ -340,7 +340,7 @@ button:active {
 }
 
 #customize button.off svg {
-	fill: transparent;
+	fill: var(--content-placeholder);
 }
 
 #customize-content {
@@ -395,12 +395,29 @@ button:active {
 }
 
 #customize-tabs li {
-	transition: padding-left var(--animation);
+	transition: padding var(--animation), color var(--animation);
 	padding-left: 0;
+	padding-right: .5rem;
+	
+	color: #7f7f7f;
+	
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
 }
 
 #customize-tabs li:hover {
 	padding-left: .5rem;
+	padding-right: 0;
+	
+	color: var(--content-text);
+}
+
+#customize-tabs li.on {
+	padding-left: .5rem;
+	padding-right: 0;
+	
+	color: #cfcfcf;
 }
 
 #customize-tabcontent {
@@ -414,10 +431,15 @@ button:active {
 label {
 	display: inline-block;
 	padding-left: .5rem;
+	width: calc(100% - 2rem);
 	height: 2rem;
 	
 	vertical-align: top;
 	line-height: 2rem;
+	
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
 }
 
 hr {

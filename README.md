@@ -18,3 +18,7 @@
 * Customizable random background
 * Refactor everything, it looks good but it's impossible to style.
 * Clock mode: nothing but the time in the center of the screen.
+
+# Credits
+* Me - HTML, CSS, Javascript
+* Pexels - Those cool backgrounds
