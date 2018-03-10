@@ -45,7 +45,12 @@ function setup() {
 		theme: document.getElementById("customize-themetoggle"),
 		date: document.getElementById("customize-datetoggle"),
 		longdate: document.getElementById("customize-longdatetoggle"),
+		tabs: {
+			backgrounds: document.getElementById("tab-backgrounds"),
+			about: document.getElementById("tab-about")
+		},
 		tabcontent: {
+			backgrounds: document.getElementById("customize-backgrounds"),
 			about: document.getElementById("customize-about")
 		}
 	}
@@ -53,6 +58,10 @@ function setup() {
 	customize.theme.addEventListener("click", toggleTheme);
 	customize.date.addEventListener("click", checkbox(customize.date, "date"));
 	customize.longdate.addEventListener("click", checkbox(customize.longdate, "longdate"));
+	
+	for (tab in customize.tabs) {
+		customize.tabs[tab].addEventListener("click", tabclick(customize.tabs[tab], customize.tabcontent[tab]));
+	}
 	
 	// Time
 	time = {
@@ -128,6 +137,26 @@ function checkbox(element, item) {
 		} else {
 			element.className = "off";
 		}
+	}
+}
+
+function tabclick(tab, content) {
+	return function() {
+		var other = document.querySelectorAll("#customize-tabs li.on");
+		
+		for (element in other) {
+			other[element].className = "";
+		}
+		
+		tab.className = "on";
+		
+		other = document.querySelectorAll("#customize-tabcontent div.on");
+		
+		for (element in other) {
+			other[element].className = "";
+		}
+		
+		content.className = "on";
 	}
 }
 
