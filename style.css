@@ -34,6 +34,13 @@ input, button {
 	--fade-out: black;
 	
 	--animation: .2s;
+	--animation-customize: var(--animation);
+	--animation-customize-tabs: var(--animation);
+	--animation-block-fadein: var(--animation);
+	--animation-block-fadeout: var(--animation);
+	--animation-time-blink: var(--animation);
+	--animation-search-box: var(--animation);
+	--animation-search-submit: var(--animation);
 	--animation-icon: var(--animation);
 	
 	--select-text: white;
@@ -324,7 +331,7 @@ h1 {
 	font-size: 1.5rem;
 	font-weight: normal;
 	
-	color: var(--content-timedate);
+	color: var(--content-time);
 }
 
 h1:first-child {
@@ -377,7 +384,7 @@ button:active {
 	
 	z-index: 3;
 	
-	transition: top var(--animation);
+	transition: top var(--animation-customize);
 }
 
 #customize.on {
@@ -440,7 +447,7 @@ button:active {
 }
 
 #customize-tabs li {
-	transition: padding var(--animation), color var(--animation);
+	transition: padding var(--animation-customize-tabs), color var(--animation-customize-tabs);
 	padding-left: 0;
 	padding-right: .5rem;
 	
@@ -477,6 +484,13 @@ button:active {
 	overflow-y: auto;
 }
 
+#customize-tabcontent > div { display: none; }
+#customize-tabcontent > div.on { display: block; }
+
+canvas {
+	width: 100%;
+}
+
 label {
 	display: inline-block;
 	padding-left: .5rem;
@@ -503,7 +517,7 @@ hr {
 	width: 100%;
 	height: 0;
 	
-	animation: fadein var(--animation);
+	animation: fadein var(--animation-block-fadein);
 	opacity: 0;
 	
 	z-index: 4;
@@ -530,7 +544,7 @@ hr {
 #block.fadeout {
 	height: 100%;
 	
-	transition: opacity var(--animation);
+	transition: opacity var(--animation-block-fadeout);
 	opacity: 1;
 	
 	background-color: var(--fade-out);
@@ -599,7 +613,7 @@ hr {
 	padding-bottom: .5rem;
 	height: 2.5rem;
 	
-	color: var(--content-timedate);
+	color: var(--content-time);
 	
 	line-height: 2rem;
 	font-size: 2rem;
@@ -607,7 +621,7 @@ hr {
 }
 
 #time-blink {
-	transition: opacity ease-out var(--animation);
+	transition: opacity ease-out var(--animation-time-blink);
 }
 
 #time-blink.off { opacity: 0; }
@@ -623,7 +637,7 @@ hr {
 	
 	color: var(--content-text);
 	
-	transition: background-color ease-out var(--animation);
+	transition: background-color ease-out var(--animation-search);
 	background-color: var(--content-background);
 	
 	line-height: 1rem;
@@ -648,7 +662,7 @@ hr {
 	text-align: center;
 }
 
-#search-box.off.date::placeholder { color: var(--content-timedate); }
+#search-box.off.date::placeholder { color: var(--content-time); }
 #search-box.off.date:focus::placeholder { opacity: 0; }
 
 #search-box.on, #search-box:focus {
@@ -671,7 +685,7 @@ hr {
 	
 	width: 2rem;
 	
-	transition: opacity ease-out var(--animation);
+	transition: opacity ease-out var(--animation-search-submit);
 }
 
 #search-submit.on { opacity: 1; }

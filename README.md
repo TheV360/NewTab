@@ -20,5 +20,6 @@
 * Clock mode: nothing but the time in the center of the screen.
 
 # Credits
-* Me - HTML, CSS, Javascript
+* Me - HTML, CSS, Javascript, additional icons
 * Pexels - Those cool backgrounds
+* Font Awesome - Those good icons

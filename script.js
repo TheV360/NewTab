@@ -9,6 +9,8 @@ var search;
 var bookmark;
 var special;
 
+var Module;
+
 window.addEventListener("load", setup);
 
 function setup() {
@@ -29,61 +31,23 @@ function setup() {
 	// Header
 	header = {
 		clock: document.getElementById("header-clock"),
-		customize: document.getElementById("header-customize")
+		customize: document.getElementById("header-customize"),
+		styles: [
+			{name: ""}
+		]
 	};
 	header.customize.addEventListener("click", toggleMenu);
 	
 	// Customize
-	/*customize = {
-		back: document.getElementById("back"),
-		color: [
-			{
-				name: "Fade",
-				variables: [
-					"fade-in",
-					"fade-out",
-				]
-			},
-			
-			{
-				name: "Selection",
-				variables: [
-					"select-text",
-					"select-background"
-				]
-			},
-			
-			{
-			"header-text",
-			"header-background",
-			"header-thin",
-			"header-input",
-			"header-focus",
-			},
-			
-			{
-			"content-text",
-			"content-background",
-			"content-timedate",
-			"content-search",
-			"content-search-hover",
-			"content-search-focus",
-			"content-placeholder",
-			},
-			
-			{
-			"icon-color",
-			"icon-background",
-			"icon-background-hover"
-			}
-		]
-	};*/
 	customize = {
 		parent: document.getElementById("customize"),
 		back: document.getElementById("customize-back"),
 		theme: document.getElementById("customize-themetoggle"),
 		date: document.getElementById("customize-datetoggle"),
-		longdate: document.getElementById("customize-longdatetoggle")
+		longdate: document.getElementById("customize-longdatetoggle"),
+		tabcontent: {
+			about: document.getElementById("customize-about")
+		}
 	}
 	customize.back.addEventListener("click", toggleMenu);
 	customize.theme.addEventListener("click", toggleTheme);
@@ -377,6 +341,27 @@ function altSearch(event) {
 /*function goBookmark() {
 	
 }*/
+
+// Hey, spoiling the surprise isn't fun... find it out yourself...
+function eggStart() {
+	var eggCanvas = document.createElement("canvas");
+	var eggContext;
+	var eggScript = document.createElement("script");
+	
+	eggCanvas.width = "128";
+	eggCanvas.height = "128";
+	
+	eggContext = eggCanvas.getContext("2d");
+	eggContext.imageSmoothingEnabled = false;
+	
+	eggScript.type = "text/javascript";
+	eggScript.src = "assets.js";
+	
+	customize.tabcontent.about.appendChild(eggCanvas);
+	customize.tabcontent.about.appendChild(eggScript);
+	
+	Module = {canvas: eggCanvas};
+}
 
 // From sitepoint.com/removing-useless-nodes-from-the-dom/
 // I just fixed their awful formatting

@@ -24,96 +24,43 @@
 				</header>
 				<div id="customize-tabs">
 					<ul>
-						<li>Backgrounds</li>
-						<li>Colors</li>
-						<li>Date &amp; Time</li>
-						<li>Search</li>
-						<li>Icons</li>
-						<li>Advanced</li>
-						<li>About</li>
+						<li id="tab-backgrounds">Backgrounds</li>
+						<li id="tab-colors">Colors</li>
+						<li id="tab-datetime">Date &amp; Time</li>
+						<li id="tab-search">Search</li>
+						<li id="tab-icons">Icons</li>
+						<li id="tab-advanced">Advanced</li>
+						<li id="tab-about" class="on">About</li>
 					</ul>
 				</div>
 				<div id="customize-tabcontent">
-					<h1>Theme</h1>
-					<button id="customize-themetoggle">
-						<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
-							<use xlink:href="fa-solid.svg#paint-brush"></use>
-						</svg>
-					</button>
-					<label for="customize-themetoggle">Change theme</label>
-					<h1>Date &amp; Time</h1>
-					<button id="customize-datetoggle">
-						<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
-							<use xlink:href="fa-solid.svg#check"></use>
-						</svg>
-					</button>
-					<label for="customize-datetoggle">Show date in search box</label>
-					<button id="customize-longdatetoggle">
-						<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
-							<use xlink:href="fa-solid.svg#check"></use>
-						</svg>
-					</button>
-					<label for="customize-longdatetoggle">Show long date</label>
-					<h1>Theme</h1>
-					<button id="customize-themetoggle">
-						<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
-							<use xlink:href="fa-solid.svg#paint-brush"></use>
-						</svg>
-					</button>
-					<label for="customize-themetoggle">Change theme</label>
-					<h1>Date &amp; Time</h1>
-					<button id="customize-datetoggle">
-						<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
-							<use xlink:href="fa-solid.svg#check"></use>
-						</svg>
-					</button>
-					<label for="customize-datetoggle">Show date in search box</label>
-					<button id="customize-longdatetoggle">
-						<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
-							<use xlink:href="fa-solid.svg#check"></use>
-						</svg>
-					</button>
-					<label for="customize-longdatetoggle">Show long date</label>
-					<h1>Theme</h1>
-					<button id="customize-themetoggle">
-						<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
-							<use xlink:href="fa-solid.svg#paint-brush"></use>
-						</svg>
-					</button>
-					<label for="customize-themetoggle">Change theme</label>
-					<h1>Date &amp; Time</h1>
-					<button id="customize-datetoggle">
-						<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
-							<use xlink:href="fa-solid.svg#check"></use>
-						</svg>
-					</button>
-					<label for="customize-datetoggle">Show date in search box</label>
-					<button id="customize-longdatetoggle">
-						<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
-							<use xlink:href="fa-solid.svg#check"></use>
-						</svg>
-					</button>
-					<label for="customize-longdatetoggle">Show long date</label>
-					<h1>Theme</h1>
-					<button id="customize-themetoggle">
-						<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
-							<use xlink:href="fa-solid.svg#paint-brush"></use>
-						</svg>
-					</button>
-					<label for="customize-themetoggle">Change theme</label>
-					<h1>Date &amp; Time</h1>
-					<button id="customize-datetoggle">
-						<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
-							<use xlink:href="fa-solid.svg#check"></use>
-						</svg>
-					</button>
-					<label for="customize-datetoggle">Show date in search box</label>
-					<button id="customize-longdatetoggle">
-						<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
-							<use xlink:href="fa-solid.svg#check"></use>
-						</svg>
-					</button>
-					<label for="customize-longdatetoggle">Show long date</label>
+					<div id="customize-backgrounds">
+						<h1>Theme</h1>
+						<button id="customize-themetoggle">
+							<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
+								<use xlink:href="fa-solid.svg#paint-brush"></use>
+							</svg>
+						</button>
+						<label for="customize-themetoggle">Change theme</label>
+						<h1>Date &amp; Time</h1>
+						<button id="customize-datetoggle">
+							<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
+								<use xlink:href="fa-solid.svg#check"></use>
+							</svg>
+						</button>
+						<label for="customize-datetoggle">Show date in search box</label>
+						<button id="customize-longdatetoggle">
+							<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
+								<use xlink:href="fa-solid.svg#check"></use>
+							</svg>
+						</button>
+						<label for="customize-longdatetoggle">Show long date</label>
+					</div>
+					<div id="customize-about" class="on">
+						<span>By V360</span>
+						<span>@TheV360gameDev</span>
+						<span>See the README.MD for credits.</span>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -179,17 +126,15 @@
 						</div>
 						<div class="icon">
 							<a id="smilebasicsource" class="iconbox" href="https://smilebasicsource.com/activity">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" class="svg-ti">
-									<circle cx="96" cy="96" r="88" class="svg-tf" />
-									<circle cx="96" cy="96" r="76" class="svg-ti" />
-									<path d="m45 60h32v10h10v52h-10v10h-32v-10h-10v-52h10zm2 12v48h28v-48zm58 -12h12v30h8v-10h10v-10h10v-10h12v12h-10v10h-10v10h-10v8h10v10h10v10h10v12h-12v-10h-10v-10h-10v-10h-8v30h-12z" class="svg-tf" />
+								<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
+									<use xlink:href="fa-brands.svg#smilebasic-source"></use>
 								</svg>
 							</a>
 						</div>
 						<div class="icon">
 							<a id="github" class="iconbox" href="https://github.com">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" class="svg-tf">
-									<path d="M18,1.4C9,1.4,1.7,8.7,1.7,17.7c0,7.2,4.7,13.3,11.1,15.5  c0.8,0.1,1.1-0.4,1.1-0.8c0-0.4,0-1.4,0-2.8c-4.5,1-5.5-2.2-5.5-2.2c-0.7-1.9-1.8-2.4-1.8-2.4c-1.5-1,0.1-1,0.1-1  c1.6,0.1,2.5,1.7,2.5,1.7c1.5,2.5,3.8,1.8,4.7,1.4c0.1-1.1,0.6-1.8,1-2.2c-3.6-0.4-7.4-1.8-7.4-8.1c0-1.8,0.6-3.2,1.7-4.4  c-0.2-0.4-0.7-2.1,0.2-4.3c0,0,1.4-0.4,4.5,1.7c1.3-0.4,2.7-0.5,4.1-0.5c1.4,0,2.8,0.2,4.1,0.5c3.1-2.1,4.5-1.7,4.5-1.7  c0.9,2.2,0.3,3.9,0.2,4.3c1,1.1,1.7,2.6,1.7,4.4c0,6.3-3.8,7.6-7.4,8c0.6,0.5,1.1,1.5,1.1,3c0,2.2,0,3.9,0,4.5  c0,0.4,0.3,0.9,1.1,0.8c6.5-2.2,11.1-8.3,11.1-15.5C34.3,8.7,27,1.4,18,1.4z" />
+								<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
+									<use xlink:href="fa-brands.svg#github"></use>
 								</svg>
 							</a>
 						</div>
