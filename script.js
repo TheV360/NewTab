@@ -47,10 +47,20 @@ function setup() {
 		longdate: document.getElementById("customize-longdatetoggle"),
 		tabs: {
 			backgrounds: document.getElementById("tab-backgrounds"),
+			colors: document.getElementById("tab-colors"),
+			datetime: document.getElementById("tab-datetime"),
+			search: document.getElementById("tab-search"),
+			icons: document.getElementById("tab-icons"),
+			advanced: document.getElementById("tab-advanced"),
 			about: document.getElementById("tab-about")
 		},
 		tabcontent: {
 			backgrounds: document.getElementById("customize-backgrounds"),
+			colors: document.getElementById("customize-colors"),
+			datetime: document.getElementById("customize-datetime"),
+			search: document.getElementById("customize-search"),
+			icons: document.getElementById("customize-icons"),
+			advanced: document.getElementById("customize-advanced"),
 			about: document.getElementById("customize-about")
 		}
 	}

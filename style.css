@@ -513,11 +513,14 @@ canvas {
 	
 	text-align: center;
 	
+	font-weight: lighter;
 	line-height: 1.25;
 }
 
 #customize-about a {
 	display: inline-block;
+	
+	font-weight: normal;
 }
 
 svg.social {
