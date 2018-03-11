@@ -141,7 +141,7 @@ function setup() {
 	
 	// Everything's good to go!
 	update();
-	updateSearch();
+	updateTimeDate();
 }
 
 function fadeout() {
