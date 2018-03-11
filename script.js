@@ -42,12 +42,14 @@ function setup() {
 	customize = {
 		parent: document.getElementById("customize"),
 		back: document.getElementById("customize-back"),
-		theme: document.getElementById("customize-themebutton"),
 		toggles: {
 			seconds: document.getElementById("customize-secondstoggle"),
 			military: document.getElementById("customize-militarytoggle"),
 			date: document.getElementById("customize-datetoggle"),
 			longdate: document.getElementById("customize-longdatetoggle")
+		},
+		selects: {
+			theme: document.getElementById("customize-themeselect")
 		},
 		tabs: {
 			backgrounds: document.getElementById("tab-backgrounds"),
@@ -69,10 +71,13 @@ function setup() {
 		}
 	}
 	customize.back.addEventListener("click", toggleMenu);
-	customize.theme.addEventListener("click", toggleTheme);
 	
 	for (toggle in customize.toggles) {
 		customize.toggles[toggle].addEventListener("click", checkbox(customize.toggles[toggle], toggle));
+	}
+	
+	for (select in customize.selects) {
+		customize.selects[select].addEventListener("change", selectbox(customize.selects[select], select));
 	}
 	
 	for (tab in customize.tabs) {
@@ -153,6 +158,41 @@ function checkbox(element, item) {
 		} else {
 			element.className = "off";
 		}
+	}
+}
+
+function selectbox(element, item) {
+	var result;
+	var toggles;
+	
+	result = storage.getItem(item);
+	
+	toggles = [];
+	
+	for (i = 0; i < element.options.length; i++) {
+		toggles.push(element.options[i].value);
+	}
+	
+	console.log(toggles);
+	
+	if (result && toggles.indexOf(result) >= 0) {
+		element.selectedIndex = toggles.indexOf(result);
+	} else {
+		element.selectedIndex = 0;
+	}
+	
+	return function(e) {
+		storage.setItem(item, e.target.value);
+		
+		result = e.target.value;
+		
+		if (result && toggles.indexOf(result) >= 0) {
+			element.selectedIndex = toggles.indexOf(result);
+		} else {
+			element.selectedIndex = 0;
+		}
+		
+		return result;
 	}
 }
 
