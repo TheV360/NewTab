@@ -546,7 +546,19 @@ select {
 	height: 2rem;
 	
 	color: var(--content-text);
-	background-color: var(--content-time);
+	background-color: var(--content-background);
+}
+
+select:hover {
+	background-color: var(--button-hover);
+}
+
+select:focus {
+	background-color: var(--button-focus);
+}
+
+select option {
+	background-color: var(--content-background);
 }
 
 label + select {

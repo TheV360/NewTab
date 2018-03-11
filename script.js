@@ -42,6 +42,12 @@ function setup() {
 	customize = {
 		parent: document.getElementById("customize"),
 		back: document.getElementById("customize-back"),
+		buttons: {
+			reset: {
+				element: document.getElementById("customize-resetbutton"),
+				callback: resetStorage
+			}
+		},
 		toggles: {
 			seconds: document.getElementById("customize-secondstoggle"),
 			military: document.getElementById("customize-militarytoggle"),
@@ -71,6 +77,10 @@ function setup() {
 		}
 	}
 	customize.back.addEventListener("click", toggleMenu);
+	
+	for (button in customize.buttons) {
+		customize.buttons[button].element.addEventListener("click", function(){ customize.buttons[button].callback() });
+	}
 	
 	for (toggle in customize.toggles) {
 		customize.toggles[toggle].addEventListener("click", checkbox(customize.toggles[toggle], toggle));
@@ -130,8 +140,7 @@ function setup() {
 	document.addEventListener("keyup", updateSpecial);
 	
 	// Everything's good to go!
-	updateStorage();
-	updateTimeDate();
+	update();
 	updateSearch();
 }
 
@@ -158,6 +167,8 @@ function checkbox(element, item) {
 		} else {
 			element.className = "off";
 		}
+		
+		update();
 	}
 }
 
@@ -172,8 +183,6 @@ function selectbox(element, item) {
 	for (i = 0; i < element.options.length; i++) {
 		toggles.push(element.options[i].value);
 	}
-	
-	console.log(toggles);
 	
 	if (result && toggles.indexOf(result) >= 0) {
 		element.selectedIndex = toggles.indexOf(result);
@@ -192,7 +201,7 @@ function selectbox(element, item) {
 			element.selectedIndex = 0;
 		}
 		
-		return result;
+		update();
 	}
 }
 
@@ -222,12 +231,6 @@ function resetStorage(confirmed = false) {
 	}
 }
 
-function toggleClass(element, toggle = "on") {
-	if (element.className.indexOf(toggle) >= 0) {
-		
-	}
-}
-
 function toggleStorage(item, toggles, step = 1) {
 	var value;
 	
@@ -250,10 +253,6 @@ function toggleStorage(item, toggles, step = 1) {
 	updateStorage();
 }
 
-function toggleTheme() {
-	toggleStorage("theme", ["", "white", "red", "yellow", "green", "cyan", "blue", "purple", "custom"]);
-}
-
 function toggleMenu() {
 	if (document.getElementById("customize").className === "") {
 		document.getElementById("customize").className = "on";
@@ -261,8 +260,7 @@ function toggleMenu() {
 		document.getElementById("customize").className = "";
 	}
 	
-	updateStorage();
-	updateSearch();
+	update();
 }
 
 /*function getBookmark(bookmarkItem) {
@@ -275,6 +273,11 @@ function toggleMenu() {
 		return false;
 	}
 }*/
+
+function update() {
+	updateStorage();
+	updateSearch();
+}
 
 function updateStorage() {
 	document.documentElement.className = storage.getItem("theme");
