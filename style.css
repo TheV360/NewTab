@@ -541,7 +541,7 @@ button + label:after {
 	content: "";
 }
 
-select {
+select, input {
 	width: 100%;
 	height: 2rem;
 	
@@ -549,11 +549,11 @@ select {
 	background-color: var(--content-background);
 }
 
-select:hover {
+select:hover, input:hover {
 	background-color: var(--button-hover);
 }
 
-select:focus {
+select:focus, input:focus {
 	background-color: var(--button-focus);
 }
 
@@ -561,8 +561,8 @@ select option {
 	background-color: var(--content-background);
 }
 
-label + select {
-	width: 8rem;
+label + select, label + input {
+	width: 12rem;
 }
 
 /* Block & Its Animations */

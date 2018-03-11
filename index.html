@@ -92,7 +92,29 @@
 						<label for="customize-longdatetoggle">Show long date</label>
 					</div>
 					<div id="customize-search">
-						<h1>This tab isn't finished yet either.</h1>
+						<h1>Search</h1>
+						
+						<button id="customize-searchfocustoggle">
+							<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
+								<use xlink:href="fa-solid.svg#check"></use>
+							</svg>
+						</button>
+						<label for="customize-searchfocustoggle">Focus search box on page load</label>
+						
+						
+						<h1>Search Provider</h1>
+						
+						<label for="customize-searchproviderselect">Search Provider</label>
+						<select id="customize-searchproviderselect">
+							<option value="https://google.com/search?q=%s">Google</option>
+							<option value="https://bing.com/search?q=%s">Bing</option>
+							<option value="https://search.yahoo.com/search?p=%s">Yahoo</option>
+							<option value="https://duckduckgo.com/?q=%s">DuckDuckGo</option>
+							<option value="">Custom</option>
+						</select>
+						
+						<label for="customize-customprovidertext">Custom Provider</label>
+						<input id="customize-customprovidertext" type="text" placeholder="https://google.com/search?q=%s" />
 					</div>
 					<div id="customize-icons">
 						<h1>This tab is finished. just kidding lol</h1>

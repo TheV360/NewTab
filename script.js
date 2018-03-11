@@ -23,6 +23,7 @@ function setup() {
 	
 	// Storage
 	storage = window.localStorage;
+	if (storage.getItem("setup")!=="true") { resetStorage(); }
 	
 	// Background
 	background = document.getElementById("background");
@@ -31,10 +32,10 @@ function setup() {
 	// Header
 	header = {
 		clock: document.getElementById("header-clock"),
-		customize: document.getElementById("header-customize"),
+		customize: document.getElementById("header-customize")/*,
 		styles: [
 			{name: ""}
-		]
+		]*/
 	};
 	header.customize.addEventListener("click", toggleMenu);
 	
@@ -52,10 +53,15 @@ function setup() {
 			seconds: document.getElementById("customize-secondstoggle"),
 			military: document.getElementById("customize-militarytoggle"),
 			date: document.getElementById("customize-datetoggle"),
-			longdate: document.getElementById("customize-longdatetoggle")
+			longdate: document.getElementById("customize-longdatetoggle"),
+			searchfocus: document.getElementById("customize-searchfocustoggle")
 		},
 		selects: {
-			theme: document.getElementById("customize-themeselect")
+			theme: document.getElementById("customize-themeselect"),
+			searchprovider: document.getElementById("customize-searchproviderselect")
+		},
+		texts: {
+			customprovider: document.getElementById("customize-customprovidertext")
 		},
 		tabs: {
 			backgrounds: document.getElementById("tab-backgrounds"),
@@ -90,6 +96,10 @@ function setup() {
 		customize.selects[select].addEventListener("change", selectbox(customize.selects[select], select));
 	}
 	
+	for (text in customize.texts) {
+		customize.texts[text].addEventListener("change", textbox(customize.texts[text], text));
+	}
+	
 	for (tab in customize.tabs) {
 		customize.tabs[tab].addEventListener("click", tabclick(customize.tabs[tab], customize.tabcontent[tab]));
 	}
@@ -117,17 +127,18 @@ function setup() {
 		parent: document.getElementById("search"),
 		box: document.getElementById("search-box"),
 		button: document.getElementById("search-submit"),
-		new: false
+		new: false,
+		provider: storage.getItem("searchprovider")
 	};
 	
 	search.button.addEventListener("mousedown", altSearch);
 	search.parent.addEventListener("submit", goSearch);
 	search.box.addEventListener("input", updateSearch);
 	
-	// Bookmark
-	/*bookmark.forEach(function(bookmarkItem) {
-		bookmarkItem.addEventListener("click", getBookmark(bookmarkItem));
-	});*/
+	if (storage.getItem("searchfocus")==="true") {
+		search.box.focus();
+		search.box.select();
+	}
 	
 	// Special keys
 	special = {
@@ -184,7 +195,7 @@ function selectbox(element, item) {
 		toggles.push(element.options[i].value);
 	}
 	
-	if (result && toggles.indexOf(result) >= 0) {
+	if (toggles.indexOf(result) >= 0) {
 		element.selectedIndex = toggles.indexOf(result);
 	} else {
 		element.selectedIndex = 0;
@@ -195,11 +206,29 @@ function selectbox(element, item) {
 		
 		result = e.target.value;
 		
-		if (result && toggles.indexOf(result) >= 0) {
+		if (toggles.indexOf(result) >= 0) {
 			element.selectedIndex = toggles.indexOf(result);
 		} else {
 			element.selectedIndex = 0;
 		}
+		
+		update();
+	}
+}
+
+function textbox(element, item) {
+	var result;
+	
+	result = storage.getItem(item);
+	
+	if (result) {
+		element.value = result;
+	} else {
+		element.value = "";
+	}
+	
+	return function() {
+		storage.setItem(item, element.value);
 		
 		update();
 	}
@@ -225,9 +254,23 @@ function tabclick(tab, content) {
 	}
 }
 
-function resetStorage(confirmed = false) {
-	if (confirmed || confirm("Reset customization settings to defaults?\nThis will delete all your custom CSS and it cannot be undone.")) {
+function resetStorage() {
+	if (storage.getItem("setup")!=="true" || confirm("Reset customization settings to defaults?\nThis will delete all your custom CSS and it cannot be undone.")) {
 		storage.clear();
+		
+		storage.setItem("setup", "true");
+		
+		storage.setItem("theme", "");
+		
+		storage.setItem("seconds", "false");
+		storage.setItem("military", "false");
+		
+		storage.setItem("date", "false");
+		storage.setItem("longdate", "false");
+		
+		storage.setItem("searchfocus", "false");
+		storage.setItem("searchprovider", document.getElementById("customize-searchproviderselect").options[0].value);
+		storage.setItem("customprovider", "");
 	}
 }
 
@@ -281,6 +324,13 @@ function update() {
 
 function updateStorage() {
 	document.documentElement.className = storage.getItem("theme");
+	if (storage.getItem("searchprovider")!=="") {
+		search.provider = storage.getItem("searchprovider");
+	} else if (storage.getItem("customprovider")!=="") {
+		search.provider = storage.getItem("customprovider");
+	} else {
+		search.provider = "data:text/html,<h1>You chose custom provider, but the custom field is empty?!</h1><p>Your search for <b>%s</b> couldn't be completed...</p><a href=\"https://thev360.github.io/NewTab\">Return to New Tab</a>";
+	}
 	time.seconds = storage.getItem("seconds") === "true";
 	time.military = storage.getItem("military") === "true";
 	date.enabled = storage.getItem("date") === "true";
@@ -372,7 +422,7 @@ function updateSpecial(event) {
 }
 
 function goSearch(event) {
-	var searchURL = "https://google.com/search?q=" + encodeURI(search.box.value);
+	var searchURL = search.provider.replace("%s", encodeURI(search.box.value));
 	
 	// override search.new if you're holding shift (or ctrl and alt, but there's no feedback for those...)
 	if (special.shift || special.ctrl || special.alt) search.new = true;
