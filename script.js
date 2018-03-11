@@ -42,13 +42,17 @@ function setup() {
 	customize = {
 		parent: document.getElementById("customize"),
 		back: document.getElementById("customize-back"),
-		theme: document.getElementById("customize-themetoggle"),
-		date: document.getElementById("customize-datetoggle"),
-		longdate: document.getElementById("customize-longdatetoggle"),
+		theme: document.getElementById("customize-themebutton"),
+		toggles: {
+			seconds: document.getElementById("customize-secondstoggle"),
+			military: document.getElementById("customize-militarytoggle"),
+			date: document.getElementById("customize-datetoggle"),
+			longdate: document.getElementById("customize-longdatetoggle")
+		},
 		tabs: {
 			backgrounds: document.getElementById("tab-backgrounds"),
 			colors: document.getElementById("tab-colors"),
-			datetime: document.getElementById("tab-datetime"),
+			timedate: document.getElementById("tab-timedate"),
 			search: document.getElementById("tab-search"),
 			icons: document.getElementById("tab-icons"),
 			advanced: document.getElementById("tab-advanced"),
@@ -57,7 +61,7 @@ function setup() {
 		tabcontent: {
 			backgrounds: document.getElementById("customize-backgrounds"),
 			colors: document.getElementById("customize-colors"),
-			datetime: document.getElementById("customize-datetime"),
+			timedate: document.getElementById("customize-timedate"),
 			search: document.getElementById("customize-search"),
 			icons: document.getElementById("customize-icons"),
 			advanced: document.getElementById("customize-advanced"),
@@ -66,8 +70,10 @@ function setup() {
 	}
 	customize.back.addEventListener("click", toggleMenu);
 	customize.theme.addEventListener("click", toggleTheme);
-	customize.date.addEventListener("click", checkbox(customize.date, "date"));
-	customize.longdate.addEventListener("click", checkbox(customize.longdate, "longdate"));
+	
+	for (toggle in customize.toggles) {
+		customize.toggles[toggle].addEventListener("click", checkbox(customize.toggles[toggle], toggle));
+	}
 	
 	for (tab in customize.tabs) {
 		customize.tabs[tab].addEventListener("click", tabclick(customize.tabs[tab], customize.tabcontent[tab]));
@@ -120,7 +126,7 @@ function setup() {
 	
 	// Everything's good to go!
 	updateStorage();
-	updateDateTime();
+	updateTimeDate();
 	updateSearch();
 }
 
@@ -219,32 +225,6 @@ function toggleMenu() {
 	updateSearch();
 }
 
-function toggleDate() {
-	var value;
-	
-	value = toggleStorage("date");
-	
-	updateStorage();
-	updateSearch();
-	
-	return value;
-}
-
-function toggleLongDate() {
-	var value;
-	
-	value = toggleStorage("longdate");
-	
-	updateStorage();
-	updateSearch();
-	
-	return value;
-}
-
-function addCSSVariable(name, value) {
-	
-}
-
 /*function getBookmark(bookmarkItem) {
 	return function(e) {
 		e.preventDefault();
@@ -258,15 +238,13 @@ function addCSSVariable(name, value) {
 
 function updateStorage() {
 	document.documentElement.className = storage.getItem("theme");
+	time.seconds = storage.getItem("seconds") === "true";
+	time.military = storage.getItem("military") === "true";
 	date.enabled = storage.getItem("date") === "true";
 	date.long = storage.getItem("longdate") === "true";
 }
 
-function updateTheme() {
-	
-}
-
-function updateDateTime() {
+function updateTimeDate() {
 	var now = new Date();
 	
 	if (time.military) {
@@ -315,7 +293,7 @@ function updateDateTime() {
 		search.box.placeholder = "Search";
 	}
 	
-	window.setTimeout(updateDateTime, 100);
+	window.setTimeout(updateTimeDate, 100);
 }
 
 function updateSearch() {

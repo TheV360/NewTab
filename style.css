@@ -513,14 +513,12 @@ canvas {
 	
 	text-align: center;
 	
-	font-weight: lighter;
+	font-weight: normal;
 	line-height: 1.25;
 }
 
-#customize-about a {
-	display: inline-block;
-	
-	font-weight: normal;
+#customize-about p {
+	font-weight: lighter;
 }
 
 svg.social {
@@ -531,9 +529,12 @@ svg.social {
 }
 
 #customize-about a {
+	display: inline-block;
+	
 	color: inherit;
 	text-decoration: none;
 	border-bottom: 1px solid transparent;
+	font-weight: bolder;
 }
 
 #customize-about a:hover {
