@@ -65,16 +65,18 @@ input, button {
 	--content-placeholder: #7f7f7f;
 	--content-divider: #5f5f5f;
 	
+	--customize-header: var(--header-background);
+	--customize-background: var(--content-background);
 	--customize-tab: #7f7f7f;
 	--customize-tab-hover: var(--content-text);
-	--customize-tab-focus: #cfcfcf;
+	--customize-tab-focus: var(--button-focus);
 	
 	--icon-color: white;
 	--icon-background: #3f3f3f;
 	--icon-background-hover: #5f5f5f;
 }
 
-:root.white {
+:root.light {
 	--fade-in: white;
 	--fade-out: white;
 	
@@ -99,6 +101,50 @@ input, button {
 	--content-search-focus: var(--button-focus);
 	--content-placeholder: #7f7f7f;
 	--content-divider: #afafaf;
+	
+	--icon-color: black;
+	--icon-background: #cfcfcf;
+	--icon-background-hover: #afafaf;
+}
+
+:root.tdark {
+	--header-background: #5f5f5f7f;
+	
+	--content-background: #2f2f2fcf;
+	--content-search: #2f2f2f00;
+	
+	--customize-header: #5f5f5f;
+	--customize-background: #2f2f2f;
+}
+
+:root.tlight {
+	--fade-in: white;
+	--fade-out: white;
+	
+	--select-text: white;
+	--select-background: black;
+	
+	--button-hover: #cfcfcf;
+	--button-focus: #afafaf;
+	
+	--header-text: black;
+	--header-background: #afafaf7f;
+	--header-thin: #3f3f3f;
+	--header-button: #dfdfdf;
+	--header-button-hover: var(--header-button);
+	--header-button-focus: #7f7f7f;
+	
+	--content-text: black;
+	--content-background: #dfdfdfcf;
+	--content-time: #afafaf;
+	--content-search: #dfdfdf00;
+	--content-search-hover: var(--button-hover);
+	--content-search-focus: var(--button-focus);
+	--content-placeholder: #7f7f7f;
+	--content-divider: #afafaf;
+	
+	--customize-header: #afafaf;
+	--customize-background: #dfdfdf;
 	
 	--icon-color: black;
 	--icon-background: #cfcfcf;
@@ -369,6 +415,10 @@ button:active {
 	fill: var(--content-placeholder);
 }
 
+#customize-header {
+	background-color: var(--customize-header);
+}
+
 #customize-content {
 	position: relative;
 	top: 0; left: 0;
@@ -379,7 +429,7 @@ button:active {
 	max-height: 32rem;
 	
 	color: var(--content-text);
-	background-color: var(--content-background);
+	background-color: var(--customize-background);
 	
 	box-shadow: 0px 0px 8px black;
 }
@@ -694,7 +744,7 @@ label + select, label + input {
 	color: var(--content-text);
 	
 	transition: background-color ease-out var(--animation-search);
-	background-color: var(--content-background);
+	background-color: var(--content-search);
 	
 	line-height: 1rem;
 	font-size: 1rem;
