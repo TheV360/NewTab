@@ -115,6 +115,8 @@ input, button {
 	
 	--customize-header: #5f5f5f;
 	--customize-background: #2f2f2f;
+	
+	--icon-background: #3f3f3f7f;
 }
 
 :root.tlight {
@@ -147,7 +149,7 @@ input, button {
 	--customize-background: #dfdfdf;
 	
 	--icon-color: black;
-	--icon-background: #cfcfcf;
+	--icon-background: #cfcfcf7f;
 	--icon-background-hover: #afafaf;
 }
 

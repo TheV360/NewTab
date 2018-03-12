@@ -101,7 +101,9 @@ function setup() {
 	}
 	
 	for (tab in customize.tabs) {
-		customize.tabs[tab].addEventListener("click", tabclick(customize.tabs[tab], customize.tabcontent[tab]));
+		console.log(tab);
+		console.log(tabclick(tab));
+		customize.tabs[tab].addEventListener("click", tabclick(tab));
 	}
 	
 	// Time
@@ -234,7 +236,10 @@ function textbox(element, item) {
 	}
 }
 
-function tabclick(tab, content) {
+function tabclick(name) {
+	var tab = customize.tabs[name];
+	var content = customize.tabcontent[name];
+	
 	return function() {
 		var other = document.querySelectorAll("#customize-tabs li.on");
 		
@@ -329,7 +334,7 @@ function updateStorage() {
 	} else if (storage.getItem("customprovider")!=="") {
 		search.provider = storage.getItem("customprovider");
 	} else {
-		search.provider = "data:text/html,<h1>You chose custom provider, but the custom field is empty?!</h1><p>Your search for <b>%s</b> couldn't be completed...</p><a href=\"https://thev360.github.io/NewTab\">Return to New Tab</a>";
+		search.provider = false;
 	}
 	time.seconds = storage.getItem("seconds") === "true";
 	time.military = storage.getItem("military") === "true";
@@ -422,17 +427,22 @@ function updateSpecial(event) {
 }
 
 function goSearch(event) {
-	var searchURL = search.provider.replace("%s", encodeURI(search.box.value));
-	
-	// override search.new if you're holding shift (or ctrl and alt, but there's no feedback for those...)
-	if (special.shift || special.ctrl || special.alt) search.new = true;
-	
-	if (search.box.value.length > 0) {
-		if (search.new) {
-			window.open(searchURL);
-		} else {
-			location.assign(searchURL);
+	if (search.provider) {
+		var searchURL = search.provider.replace("%s", encodeURI(search.box.value));
+		
+		// override search.new if you're holding shift (or ctrl and alt, but there's no feedback for those...)
+		if (special.shift || special.ctrl || special.alt) search.new = true;
+		
+		if (search.box.value.length > 0) {
+			if (search.new) {
+				window.open(searchURL);
+			} else {
+				location.assign(searchURL);
+			}
 		}
+	} else {
+		toggleMenu();
+		tabclick("search")();
 	}
 	
 	return true;
