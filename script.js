@@ -473,6 +473,18 @@ function eggStart() {
 	Module = {canvas: eggCanvas};
 }
 
+function spaceLeft() {
+	var space = 0;
+	
+	for (item in storage) {
+		if (storage.hasOwnProperty(item)) {
+			space += storage[item].length;
+		}
+	}
+	
+	return 512000000 - (space * 2);
+}
+
 // From sitepoint.com/removing-useless-nodes-from-the-dom/
 // I just fixed their awful formatting
 // and made it not mess with syntax highlighting
