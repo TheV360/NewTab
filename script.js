@@ -101,8 +101,6 @@ function setup() {
 	}
 	
 	for (tab in customize.tabs) {
-		console.log(tab);
-		console.log(tabclick(tab));
 		customize.tabs[tab].addEventListener("click", tabclick(tab));
 	}
 	
