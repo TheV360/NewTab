@@ -42,65 +42,72 @@ function setup() {
 	// Customize
 	customize = {
 		parent: document.getElementById("customize"),
-		back: document.getElementById("customize-back"),
 		buttons: {
+			back: {
+				element: "customize-back",
+				callback: toggleMenu
+			},
 			reset: {
-				element: document.getElementById("customize-resetbutton"),
+				element: "customize-resetbutton",
 				callback: resetStorage
 			}
 		},
 		toggles: {
-			seconds: document.getElementById("customize-secondstoggle"),
-			military: document.getElementById("customize-militarytoggle"),
-			date: document.getElementById("customize-datetoggle"),
-			longdate: document.getElementById("customize-longdatetoggle"),
-			searchfocus: document.getElementById("customize-searchfocustoggle")
+			seconds: "customize-secondstoggle",
+			military: "customize-militarytoggle",
+			date: "customize-datetoggle",
+			longdate: "customize-longdatetoggle",
+			searchfocus: "customize-searchfocustoggle"
 		},
 		selects: {
-			theme: document.getElementById("customize-themeselect"),
-			searchprovider: document.getElementById("customize-searchproviderselect")
+			theme: "customize-themeselect",
+			searchprovider: "customize-searchproviderselect"
 		},
 		texts: {
-			customprovider: document.getElementById("customize-customprovidertext")
+			customprovider: "customize-customprovidertext"
 		},
 		tabs: {
-			backgrounds: document.getElementById("tab-backgrounds"),
-			colors: document.getElementById("tab-colors"),
-			timedate: document.getElementById("tab-timedate"),
-			search: document.getElementById("tab-search"),
-			icons: document.getElementById("tab-icons"),
-			advanced: document.getElementById("tab-advanced"),
-			about: document.getElementById("tab-about")
+			backgrounds: "tab-backgrounds",
+			colors: "tab-colors",
+			timedate: "tab-timedate",
+			search: "tab-search",
+			icons: "tab-icons",
+			advanced: "tab-advanced",
+			about: "tab-about"
 		},
 		tabcontent: {
-			backgrounds: document.getElementById("customize-backgrounds"),
-			colors: document.getElementById("customize-colors"),
-			timedate: document.getElementById("customize-timedate"),
-			search: document.getElementById("customize-search"),
-			icons: document.getElementById("customize-icons"),
-			advanced: document.getElementById("customize-advanced"),
-			about: document.getElementById("customize-about")
+			backgrounds: "customize-backgrounds",
+			colors: "customize-colors",
+			timedate: "customize-timedate",
+			search: "customize-search",
+			icons: "customize-icons",
+			advanced: "customize-advanced",
+			about: "customize-about"
 		}
 	}
-	customize.back.addEventListener("click", toggleMenu);
 	
 	for (button in customize.buttons) {
+		customize.buttons[button].element = document.getElementById(button);
 		customize.buttons[button].element.addEventListener("click", function(){ customize.buttons[button].callback() });
 	}
 	
 	for (toggle in customize.toggles) {
+		customize.toggles[toggle] = document.getElementById(toggle);
 		customize.toggles[toggle].addEventListener("click", checkbox(customize.toggles[toggle], toggle));
 	}
 	
 	for (select in customize.selects) {
+		customize.selects[select] = document.getElementById(select);
 		customize.selects[select].addEventListener("change", selectbox(customize.selects[select], select));
 	}
 	
 	for (text in customize.texts) {
+		customize.texts[text] = document.getElementById(text);
 		customize.texts[text].addEventListener("change", textbox(customize.texts[text], text));
 	}
 	
 	for (tab in customize.tabs) {
+		customize.tabs[tab] = document.getElementById(tab);
 		customize.tabs[tab].addEventListener("click", tabclick(tab));
 	}
 	
