@@ -1,12 +1,9 @@
-var block;
-var storage;
-var background;
+var block, background;
+var storage, customize;
 var header;
-var customize;
-var time;
-var date;
+var time, date;
 var search;
-var bookmark;
+var icons;
 var special;
 
 var Module;
@@ -19,7 +16,7 @@ function setup() {
 	
 	// Block
 	block = document.getElementById("block");
-	window.addEventListener("beforeunload", fadeout);
+	window.addEventListener("pageshow", fadeIn);
 	
 	// Storage
 	storage = window.localStorage;
@@ -44,7 +41,7 @@ function setup() {
 		parent: document.getElementById("customize"),
 		buttons: {
 			back: {
-				element: "customize-back",
+				element: "customize-backbutton",
 				callback: toggleMenu
 			},
 			reset: {
@@ -67,17 +64,36 @@ function setup() {
 			customprovider: "customize-customprovidertext"
 		},
 		tabs: {
-			backgrounds: "tab-backgrounds",
-			colors: "tab-colors",
-			timedate: "tab-timedate",
-			search: "tab-search",
-			icons: "tab-icons",
-			advanced: "tab-advanced",
-			about: "tab-about"
+			backgrounds: {
+				tab: "tab-backgrounds",
+				content: "customize-backgrounds"
+			},
+			colors: {
+				tab: "tab-colors",
+				content: "customize-colors"
+			},
+			timedate: {
+				tab: "tab-timedate",
+				content: "customize-timedate"
+			},
+			search: {
+				tab: "tab-search",
+				content: "customize-search"
+			},
+			icons: {
+				tab: "tab-icons",
+				content: "customize-icons"
+			},
+			advanced: {
+				tab: "tab-advanced",
+				content: "customize-advanced"
+			},
+			about: {
+				tab: "tab-about",
+				content: "customize-about"
+			},
 		},
 		tabcontent: {
-			backgrounds: "customize-backgrounds",
-			colors: "customize-colors",
 			timedate: "customize-timedate",
 			search: "customize-search",
 			icons: "customize-icons",
@@ -87,28 +103,29 @@ function setup() {
 	}
 	
 	for (button in customize.buttons) {
-		customize.buttons[button].element = document.getElementById(button);
-		customize.buttons[button].element.addEventListener("click", function(){ customize.buttons[button].callback() });
+		customize.buttons[button].element = document.getElementById(customize.buttons[button].element);
+		customize.buttons[button].element.addEventListener("click", customize.buttons[button].callback);
 	}
 	
 	for (toggle in customize.toggles) {
-		customize.toggles[toggle] = document.getElementById(toggle);
-		customize.toggles[toggle].addEventListener("click", checkbox(customize.toggles[toggle], toggle));
+		customize.toggles[toggle] = document.getElementById(customize.toggles[toggle]);
+		customize.toggles[toggle].addEventListener("click", checkBox(customize.toggles[toggle], toggle));
 	}
 	
 	for (select in customize.selects) {
-		customize.selects[select] = document.getElementById(select);
-		customize.selects[select].addEventListener("change", selectbox(customize.selects[select], select));
+		customize.selects[select] = document.getElementById(customize.selects[select]);
+		customize.selects[select].addEventListener("change", selectBox(customize.selects[select], select));
 	}
 	
 	for (text in customize.texts) {
-		customize.texts[text] = document.getElementById(text);
-		customize.texts[text].addEventListener("change", textbox(customize.texts[text], text));
+		customize.texts[text] = document.getElementById(customize.texts[text]);
+		customize.texts[text].addEventListener("change", textBox(customize.texts[text], text));
 	}
 	
 	for (tab in customize.tabs) {
-		customize.tabs[tab] = document.getElementById(tab);
-		customize.tabs[tab].addEventListener("click", tabclick(tab));
+		customize.tabs[tab].tab = document.getElementById(customize.tabs[tab].tab);
+		customize.tabs[tab].content = document.getElementById(customize.tabs[tab].content);
+		customize.tabs[tab].tab.addEventListener("click", tabClick(tab));
 	}
 	
 	// Time
@@ -147,6 +164,13 @@ function setup() {
 		search.box.select();
 	}
 	
+	// Icons
+	icons = document.querySelectorAll("a.iconbox");
+	
+	for (i = 0; i < icons.length; i++) {
+		icons[i].addEventListener("click", linkClick(icons[i]));
+	}
+	
 	// Special keys
 	special = {
 		shift: false,
@@ -162,11 +186,15 @@ function setup() {
 	updateTimeDate();
 }
 
-function fadeout() {
+function fadeIn() {
+	block.className = "fadein";
+}
+
+function fadeOut() {
 	block.className = "fadeout";
 }
 
-function checkbox(element, item) {
+function checkBox(element, item) {
 	var result;
 	
 	result = storage.getItem(item) === "true";
@@ -190,7 +218,7 @@ function checkbox(element, item) {
 	}
 }
 
-function selectbox(element, item) {
+function selectBox(element, item) {
 	var result;
 	var toggles;
 	
@@ -223,7 +251,7 @@ function selectbox(element, item) {
 	}
 }
 
-function textbox(element, item) {
+function textBox(element, item) {
 	var result;
 	
 	result = storage.getItem(item);
@@ -241,9 +269,9 @@ function textbox(element, item) {
 	}
 }
 
-function tabclick(name) {
-	var tab = customize.tabs[name];
-	var content = customize.tabcontent[name];
+function tabClick(name) {
+	var tab = customize.tabs[name].tab;
+	var content = customize.tabs[name].content;
 	
 	return function() {
 		var other = document.querySelectorAll("#customize-tabs li.on");
@@ -261,6 +289,30 @@ function tabclick(name) {
 		}
 		
 		content.className = "on";
+	}
+}
+
+function linkClick(link) {
+	return function(event) {
+		var callback = function() { document.location.assign(link.href); };
+		var time = window.getComputedStyle(link).getPropertyValue("--animation-block-fadeout");
+		
+		if (time && time.indexOf("s" > 0)) {
+			// Convert from CSS units to milliseconds
+			if (time.indexOf("ms") > 0) {
+				time = parseFloat(time);
+			} else if (time.indexOf("s" > 0)) {
+				time = parseFloat(time) * 1000;
+			}
+		} else {
+			console.log("--animation-block-fadeout missing! Falling back to .5 seconds.");
+			time = 500;
+		}
+		
+		window.setTimeout(callback, time);
+		fadeOut();
+		
+		event.preventDefault();
 	}
 }
 
@@ -315,17 +367,6 @@ function toggleMenu() {
 	
 	update();
 }
-
-/*function getBookmark(bookmarkItem) {
-	return function(e) {
-		e.preventDefault();
-		
-		fadeout();
-		window.setTimeout(function() { location.assign(bookmarkItem.href); }, 500);
-		
-		return false;
-	}
-}*/
 
 function update() {
 	updateStorage();
@@ -447,7 +488,7 @@ function goSearch(event) {
 		}
 	} else {
 		toggleMenu();
-		tabclick("search")();
+		tabClick("search")();
 	}
 	
 	return true;
