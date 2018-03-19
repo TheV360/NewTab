@@ -188,10 +188,32 @@ function setup() {
 
 function fadeIn() {
 	block.className = "fadein";
+	
+	var time = window.getComputedStyle(block).getPropertyValue("--animation-block-fadein");
+	
+	return timeToMilliseconds(time);
 }
 
 function fadeOut() {
 	block.className = "fadeout";
+	
+	var time = window.getComputedStyle(block).getPropertyValue("--animation-block-fadeout");
+	
+	return timeToMilliseconds(time);
+}
+
+function timeToMilliseconds(time) {
+	if (time && time.indexOf("s" > 0)) {
+		// Convert from CSS units to milliseconds
+		if (time.indexOf("ms") > 0) {
+			time = parseFloat(time);
+		} else if (time.indexOf("s" > 0)) {
+			time = parseFloat(time) * 1000;
+		}
+	} else {
+		console.log("Time invalid! Falling back to .5 seconds.");
+		time = 500;
+	}
 }
 
 function checkBox(element, item) {
@@ -295,19 +317,9 @@ function tabClick(name) {
 function linkClick(link) {
 	return function(event) {
 		var callback = function() { document.location.assign(link.href); };
-		var time = window.getComputedStyle(link).getPropertyValue("--animation-block-fadeout");
+		var time = window.getComputedStyle(search.box).getPropertyValue("--animation-block-fadeout");
 		
-		if (time && time.indexOf("s" > 0)) {
-			// Convert from CSS units to milliseconds
-			if (time.indexOf("ms") > 0) {
-				time = parseFloat(time);
-			} else if (time.indexOf("s" > 0)) {
-				time = parseFloat(time) * 1000;
-			}
-		} else {
-			console.log("--animation-block-fadeout missing! Falling back to .5 seconds.");
-			time = 500;
-		}
+		time = timeToMilliseconds(time);
 		
 		window.setTimeout(callback, time);
 		fadeOut();
@@ -473,6 +485,9 @@ function updateSpecial(event) {
 }
 
 function goSearch(event) {
+	var time = window.getComputedStyle(search.box).getPropertyValue("--animation-block-fadeout");
+	var callback;
+	
 	if (search.provider) {
 		var searchURL = search.provider.replace("%s", encodeURI(search.box.value));
 		
@@ -480,11 +495,16 @@ function goSearch(event) {
 		if (special.shift || special.ctrl || special.alt) search.new = true;
 		
 		if (search.box.value.length > 0) {
-			if (search.new) {
-				window.open(searchURL);
-			} else {
-				location.assign(searchURL);
-			}
+			callback = function() {
+				if (search.new) {
+					window.open(searchURL);
+				} else {
+					location.assign(searchURL);
+				}
+			};
+			
+			window.setTimeout(callback, timeToMilliseconds(time));
+			fadeOut();
 		}
 	} else {
 		toggleMenu();
@@ -503,10 +523,6 @@ function altSearch(event) {
 		updateSearch();
 	}
 }
-
-/*function goBookmark() {
-	
-}*/
 
 // Hey, spoiling the surprise isn't fun... find it out yourself...
 function eggStart() {
