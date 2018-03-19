@@ -324,7 +324,7 @@ header {
 	vertical-align: top;
 }
 
-#window-header button {
+header button {
 	width: 2rem;
 	height: 2rem;
 	
@@ -335,15 +335,15 @@ header {
 	background-color: var(--header-button);
 }
 
-#window-header button:hover, #customize-header button:hover {
+header button:hover {
 	background-color: var(--header-button-hover);
 }
 
-#window-header button:active, #customize-header button:active {
+header button:active {
 	background-color: var(--header-button-focus);
 }
 
-#window-header:hover button, #window-header:focus button {
+header:hover button, header:focus button {
 	opacity: 1;
 }
 
@@ -439,14 +439,6 @@ button:active {
 #customize-header {
 	display: block;
 	text-align: left;
-}
-
-#customize-header button {
-	width: 2rem;
-	height: 2rem;
-	
-	color: var(--header-text);
-	background-color: var(--header-button);
 }
 
 #customize span {
