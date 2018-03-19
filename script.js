@@ -317,7 +317,7 @@ function tabClick(name) {
 function linkClick(link) {
 	return function(event) {
 		var callback = function() { document.location.assign(link.href); };
-		var time = window.getComputedStyle(search.box).getPropertyValue("--animation-block-fadeout");
+		var time = window.getComputedStyle(link).getPropertyValue("--animation-block-fadeout");
 		
 		time = timeToMilliseconds(time);
 		
