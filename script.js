@@ -3,7 +3,7 @@ var storage, customize;
 var header;
 var time, date;
 var search;
-var icons;
+var icons, links;
 var special;
 
 var Module;
@@ -29,10 +29,7 @@ function setup() {
 	// Header
 	header = {
 		clock: document.getElementById("header-clock"),
-		customize: document.getElementById("header-customize")/*,
-		styles: [
-			{name: ""}
-		]*/
+		customize: document.getElementById("header-customize")
 	};
 	header.customize.addEventListener("click", toggleMenu);
 	
@@ -92,13 +89,6 @@ function setup() {
 				tab: "tab-about",
 				content: "customize-about"
 			},
-		},
-		tabcontent: {
-			timedate: "customize-timedate",
-			search: "customize-search",
-			icons: "customize-icons",
-			advanced: "customize-advanced",
-			about: "customize-about"
 		}
 	}
 	
@@ -152,23 +142,24 @@ function setup() {
 		box: document.getElementById("search-box"),
 		button: document.getElementById("search-submit"),
 		new: false,
-		provider: storage.getItem("searchprovider")
+		provider: storage.getItem("searchprovider"),
+		focus: storage.getItem("searchfocus") === "true"
 	};
 	
 	search.button.addEventListener("mousedown", altSearch);
 	search.parent.addEventListener("submit", goSearch);
 	search.box.addEventListener("input", updateSearch);
 	
-	if (storage.getItem("searchfocus")==="true") {
+	if (search.focus) {
 		search.box.focus();
 		search.box.select();
 	}
 	
-	// Icons
-	icons = document.querySelectorAll("a.iconbox");
+	// Links
+	links = document.querySelectorAll("a");
 	
-	for (i = 0; i < icons.length; i++) {
-		icons[i].addEventListener("click", linkClick(icons[i]));
+	for (i = 0; i < links.length; i++) {
+		links[i].addEventListener("click", linkClick(links[i]));
 	}
 	
 	// Special keys
@@ -394,6 +385,7 @@ function updateStorage() {
 	} else {
 		search.provider = false;
 	}
+	search.focus = storage.getItem("searchfocus") === "true";
 	time.seconds = storage.getItem("seconds") === "true";
 	time.military = storage.getItem("military") === "true";
 	date.enabled = storage.getItem("date") === "true";

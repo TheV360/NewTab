@@ -64,6 +64,7 @@ input, button {
 	--content-search-focus: var(--button-focus);
 	--content-placeholder: #7f7f7f;
 	--content-divider: #5f5f5f;
+	--content-shadow: black;
 	
 	--customize-header: var(--header-background);
 	--customize-background: var(--content-background);
@@ -193,6 +194,20 @@ input, button {
 	--header-button: #461746;
 	--header-button-hover: var(--header-button);
 	--header-button-focus: #bf40bf;
+}
+
+:root.nothing {
+	--header-background: #2f2f2f00;
+	
+	--content-background: #2f2f2f7f;
+	--content-search: #2f2f2f00;
+	--content-shadow: transparent;
+	
+	--customize-header: #5f5f5f;
+	--customize-background: #2f2f2f;
+	
+	--icon-background: #3f3f3f00;
+	--icon-background-hover: #afafaf3f;
 }
 
 /* Weird stuff */
@@ -433,7 +448,7 @@ button:active {
 	color: var(--content-text);
 	background-color: var(--customize-background);
 	
-	box-shadow: 0px 0px 8px black;
+	box-shadow: 0px 0px 8px var(--content-shadow);
 }
 
 #customize-header {
@@ -704,7 +719,7 @@ label + select, label + input {
 	color: var(--content-text);
 	background-color: var(--content-background);
 	
-	box-shadow: 0px 0px 8px black;
+	box-shadow: 0px 0px 8px var(--content-shadow);
 }
 
 /* Time Display */
