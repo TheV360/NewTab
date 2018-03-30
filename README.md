@@ -22,4 +22,5 @@
 # Credits
 * Me - HTML, CSS, Javascript, additional icons
 * Pexels - Those cool backgrounds
+* uiGradients - Those nice gradients
 * Font Awesome - Those good icons
