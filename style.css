@@ -200,7 +200,11 @@ input, button {
 	--header-background: #2f2f2f00;
 	
 	--content-background: #2f2f2f7f;
+	--content-time: white;
 	--content-search: #2f2f2f00;
+	--content-search-hover: #2f2f2f3f;
+	--content-search-focus: #cfcfcf3f;
+	--content-placeholder: #ffffff7f;
 	--content-shadow: transparent;
 	
 	--customize-header: #5f5f5f;
@@ -673,22 +677,39 @@ label + select, label + input {
 	width: 100%;
 	height: 100%;
 	
-	filter: blur(4px);
-	
 	z-index: 1;
 }
 
 #background.random1 {
-	background: url("background1.jpeg") no-repeat center center fixed;
+	background: linear-gradient(100deg, #283c86, #45a247) no-repeat center center fixed;
 	background-size: cover;
 }
 
 #background.random2 {
-	background: url("background2.jpeg") no-repeat center center fixed;
+	background: linear-gradient(200deg, #141e30, #243b55) no-repeat center center fixed;
 	background-size: cover;
 }
 
 #background.random3 {
+	background: linear-gradient(300deg, #5c258d, #4389a2) no-repeat center center fixed;
+	background-size: cover;
+}
+
+#background.images {
+	filter: blur(4px);
+}
+
+#background.images.random1 {
+	background: url("background1.jpeg") no-repeat center center fixed;
+	background-size: cover;
+}
+
+#background.images.random2 {
+	background: url("background2.jpeg") no-repeat center center fixed;
+	background-size: cover;
+}
+
+#background.images.random3 {
 	background: url("background3.jpeg") no-repeat center center fixed;
 	background-size: cover;
 }

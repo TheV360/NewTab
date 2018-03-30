@@ -47,6 +47,7 @@ function setup() {
 			}
 		},
 		toggles: {
+			images: "customize-imagestoggle",
 			seconds: "customize-secondstoggle",
 			military: "customize-militarytoggle",
 			date: "customize-datetoggle",
@@ -326,6 +327,7 @@ function resetStorage() {
 		storage.setItem("setup", "true");
 		
 		storage.setItem("theme", "");
+		storage.setItem("images", "false");
 		
 		storage.setItem("seconds", "false");
 		storage.setItem("military", "false");
@@ -385,6 +387,9 @@ function updateStorage() {
 	} else {
 		search.provider = false;
 	}
+	background.className = "random" + (Math.floor(Math.random() * 3) + 1);
+	if (storage.getItem("images") === "true")
+		background.className += " images";
 	search.focus = storage.getItem("searchfocus") === "true";
 	time.seconds = storage.getItem("seconds") === "true";
 	time.military = storage.getItem("military") === "true";

@@ -15,6 +15,6 @@
     ],
     "theme_color": "#2f2f2f",
     "background_color": "#2f2f2f",
-    "display": "standalone",
-    "orientation": "portrait"
+    "start_url": "https://thev360.github.io/NewTab/",
+    "display": "standalone"
 }
