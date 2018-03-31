@@ -23,8 +23,11 @@ function setup() {
 	if (storage.getItem("setup")!=="true") { resetStorage(); }
 	
 	// Background
-	background = document.getElementById("background");
-	background.className = "random" + (Math.floor(Math.random() * 3) + 1);
+	background = {
+		element: document.getElementById("background"),
+		index: Math.floor(Math.random() * 3) + 1
+	}
+	background.className = "random" + background.index;
 	
 	// Header
 	header = {
@@ -387,9 +390,9 @@ function updateStorage() {
 	} else {
 		search.provider = false;
 	}
-	background.className = "random" + (Math.floor(Math.random() * 3) + 1);
+	background.element.className = "random" + background.index;
 	if (storage.getItem("images") === "true")
-		background.className += " images";
+		background.element.className += " images";
 	search.focus = storage.getItem("searchfocus") === "true";
 	time.seconds = storage.getItem("seconds") === "true";
 	time.military = storage.getItem("military") === "true";
