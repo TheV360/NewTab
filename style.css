@@ -33,6 +33,8 @@ input, button {
 	--fade-in: black;
 	--fade-out: black;
 	
+	--image-blur: 4px;
+	
 	--animation: .2s;
 	--animation-customize: var(--animation);
 	--animation-customize-tabs: var(--animation);
@@ -696,7 +698,7 @@ label + select, label + input {
 }
 
 #background.images {
-	filter: blur(4px);
+	filter: blur(var(--image-blur));
 }
 
 #background.images.random1 {
@@ -719,7 +721,6 @@ label + select, label + input {
 #window {
 	position: fixed;
 	display: flex;
-	flex-flow: row wrap;
 	top: 0; left: 0;
 	
 	justify-content: center;
