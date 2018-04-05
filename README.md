@@ -3,7 +3,8 @@
 
 # Features
 * Fade effects
-* Random backgrounds (there's a whopping two of them!)
+* Gradient backgrounds for fast loading
+* Random backgrounds (there's a whopping three of them!)
 * Clock
 	* Military time support
 	* You can show the Date too if you want, it shows up in the search box.
@@ -12,12 +13,13 @@
 	* (open the search in a new tab by holding down shift)
 	* (or just middle clicking the search button and then left clicking it)
 * Simple premade bookmarks (for now)
+* Ton of color themes
 
 # Future plans
 * Customizable icons
 * Customizable random background
 * Refactor everything, it looks good but it's impossible to style.
-* Clock mode: nothing but the time in the center of the screen.
+* Clock mode: nothing but the time in the center of the screen. (May not do this?)
 
 # Credits
 * Me - HTML, CSS, Javascript, additional icons
