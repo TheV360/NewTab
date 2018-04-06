@@ -243,6 +243,10 @@ input, button {
 	outline: 0;
 }
 
+a:link, a:hover, a:visited {
+	color: inherit;
+}
+
 input:-moz-focusring, button:-moz-focusring {
 	border: 0;
 	outline: 0;
@@ -567,7 +571,7 @@ svg.social {
 	vertical-align: sub;
 }
 
-#customize a {
+#customize a:link {
 	display: inline-block;
 	
 	color: inherit;
@@ -576,8 +580,12 @@ svg.social {
 	font-weight: bolder;
 }
 
+#customize a:visited {
+	border-bottom-style: dashed;
+}
+
 #customize a:hover {
-	border-bottom: 1px solid;
+	border-bottom: 1px solid currentcolor;
 }
 
 label {
