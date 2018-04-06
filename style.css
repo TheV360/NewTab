@@ -556,7 +556,7 @@ canvas {
 	line-height: 1.25;
 }
 
-#customize-about p {
+#customize p {
 	font-weight: lighter;
 }
 
@@ -567,7 +567,7 @@ svg.social {
 	vertical-align: sub;
 }
 
-#customize-about a {
+#customize a {
 	display: inline-block;
 	
 	color: inherit;
@@ -576,7 +576,7 @@ svg.social {
 	font-weight: bolder;
 }
 
-#customize-about a:hover {
+#customize a:hover {
 	border-bottom: 1px solid;
 }
 

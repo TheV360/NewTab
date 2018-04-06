@@ -139,7 +139,7 @@
 					<div id="customize-icons">
 						<h1>This tab is finished. just kidding lol</h1>
 						
-						<!--<label for="customize-iconselect">Edit</label>
+						<label for="customize-iconselect">Edit</label>
 						<select id="customize-iconselect">
 							<option value="0" selected>Icon 1</option>
 							<option value="1">Icon 2</option>
@@ -150,7 +150,33 @@
 						</select>
 						
 						<label for="customize-iconhighlightcolor">Highlight color</label>
-						<input id="customize-iconhighlightcolor" type="color" value="#ff0000" />-->
+						<input id="customize-iconhighlightcolor" type="color" value="#ff0000" />
+						
+						<label for="customize-iconsvgselect">Use icons from</label>
+						<select id="customize-iconsvgselect">
+							<option value="fa-solid.svg#%s">Font Awesome's solid icons</option>
+							<option value="fa-regular.svg#%s">Font Awesome's regular icons</option>
+							<option value="fa-brands.svg#%s">Font Awesome's brand icons</option>
+							<option value="data:image/svg+xml;utf8,%s">SVG data URLs (advanced)</option>
+						</select>
+						
+						<!-- TODO: put the following descriptions as placeholder text in the following box.
+							fa-solid.svg#ICON
+							fa-regular.svg#ICON
+							fa-brands.svg#ICON
+							data:image/svg+xml;utf8,ICON
+							
+							Note to self:
+								use ELEMENT.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "fa-brands.svg#ICON"); to replace SVGs.
+						-->
+						
+						<label for="customize-iconsvgtext">Icon</label>
+						<input id="customize-iconsvgtext" type="text" placeholder="TODO: put incomplete URL here" />
+						
+						
+						<h1>Additional Information</h1>
+						
+						<p><a href="https://fontawesome.com/cheatsheet">Font Awesome icon cheatsheet</a></p>
 					</div>
 					<div id="customize-advanced">
 						<h1>Reset</h1>
@@ -248,7 +274,7 @@
 						<div class="icon">
 							<a id="smilebasicsource" class="iconbox" href="https://smilebasicsource.com/activity">
 								<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
-									<use xlink:href="fa-brands.svg#smilebasic-source"></use>
+									<use xlink:href=""></use>
 								</svg>
 							</a>
 						</div>
