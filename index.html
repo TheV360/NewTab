@@ -47,120 +47,137 @@
 					<div id="customize-backgrounds">
 						<h1>Gradients</h1>
 						
-						<button id="customize-imagestoggle">
-							<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
-								<use xlink:href="fa-solid.svg#check"></use>
-							</svg>
-						</button>
-						<label for="customize-imagestoggle">Show image backgrounds</label>
+						<div class="customize-option">
+							<button id="customize-imagestoggle">
+								<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
+									<use xlink:href="fa-solid.svg#check"></use>
+								</svg>
+							</button>
+							<label for="customize-imagestoggle">Show image backgrounds</label>
+						</div>
 					</div>
 					<div id="customize-colors">
 						<h1>Theme</h1>
-						<!--<button id="customize-themebutton">
-							<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
-								<use xlink:href="fa-solid.svg#paint-brush"></use>
-							</svg>
-						</button>-->
-						<label for="customize-themeselect">Preset Theme</label>
-						<select id="customize-themeselect">
-							<option value="">Dark</option>
-							<option value="light">Light</option>
-							<option value="tdark">Translucent Dark</option>
-							<option value="tlight">Translucent Light</option>
-							<option value="red">Red</option>
-							<option value="yellow">Yellow</option>
-							<option value="green">Green</option>
-							<option value="cyan">Cyan</option>
-							<option value="blue">Blue</option>
-							<option value="purple">Purple</option>
-							<option value="nothing">Nothing</option>
-							<option value="custom">Custom</option>
-						</select>
+						
+						<div class="customize-option">
+							<label for="customize-themeselect">Preset Theme</label>
+							<select id="customize-themeselect">
+								<option value="">Dark</option>
+								<option value="light">Light</option>
+								<option value="tdark">Translucent Dark</option>
+								<option value="tlight">Translucent Light</option>
+								<option value="red">Red</option>
+								<option value="yellow">Yellow</option>
+								<option value="green">Green</option>
+								<option value="cyan">Cyan</option>
+								<option value="blue">Blue</option>
+								<option value="purple">Purple</option>
+								<option value="nothing">Nothing</option>
+								<option value="custom">Custom</option>
+							</select>
+						</div>
 					</div>
 					<div id="customize-timedate">
 						<h1>Time</h1>
 						
-						<button id="customize-secondstoggle">
-							<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
-								<use xlink:href="fa-solid.svg#check"></use>
-							</svg>
-						</button>
-						<label for="customize-secondstoggle">Show seconds</label>
+						<div class="customize-option">
+							<button id="customize-secondstoggle">
+								<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
+									<use xlink:href="fa-solid.svg#check"></use>
+								</svg>
+							</button>
+							<label for="customize-secondstoggle">Show seconds</label>
+						</div>
 						
-						<button id="customize-militarytoggle">
-							<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
-								<use xlink:href="fa-solid.svg#check"></use>
-							</svg>
-						</button>
-						<label for="customize-militarytoggle">Show military time</label>
+						<div class="customize-option">
+							<button id="customize-militarytoggle">
+								<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
+									<use xlink:href="fa-solid.svg#check"></use>
+								</svg>
+							</button>
+							<label for="customize-militarytoggle">Show military time</label>
+						</div>
 						
 						
 						<h1>Date</h1>
 						
-						<button id="customize-datetoggle">
-							<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
-								<use xlink:href="fa-solid.svg#check"></use>
-							</svg>
-						</button>
-						<label for="customize-datetoggle">Show date in search box</label>
+						<div class="customize-option">
+							<button id="customize-datetoggle">
+								<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
+									<use xlink:href="fa-solid.svg#check"></use>
+								</svg>
+							</button>
+							<label for="customize-datetoggle">Show date in search box</label>
+						</div>
 						
-						<button id="customize-longdatetoggle">
-							<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
-								<use xlink:href="fa-solid.svg#check"></use>
-							</svg>
-						</button>
-						<label for="customize-longdatetoggle">Show long date</label>
+						<div class="customize-option">
+							<button id="customize-longdatetoggle">
+								<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
+									<use xlink:href="fa-solid.svg#check"></use>
+								</svg>
+							</button>
+							<label for="customize-longdatetoggle">Show long date</label>
+						</div>
 					</div>
 					<div id="customize-search">
 						<h1>Search</h1>
 						
-						<button id="customize-searchfocustoggle">
-							<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
-								<use xlink:href="fa-solid.svg#check"></use>
-							</svg>
-						</button>
-						<label for="customize-searchfocustoggle">Focus search box on page load</label>
+						<div class="customize-option">
+							<button id="customize-searchfocustoggle">
+								<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
+									<use xlink:href="fa-solid.svg#check"></use>
+								</svg>
+							</button>
+							<label for="customize-searchfocustoggle">Focus search box on page load</label>
+						</div>
 						
 						
 						<h1>Search Provider</h1>
 						
-						<label for="customize-searchproviderselect">Search Provider</label>
-						<select id="customize-searchproviderselect">
-							<option value="https://google.com/search?q=%s">Google</option>
-							<option value="https://bing.com/search?q=%s">Bing</option>
-							<option value="https://search.yahoo.com/search?p=%s">Yahoo</option>
-							<option value="https://duckduckgo.com/?q=%s">DuckDuckGo</option>
-							<option value="">Custom</option>
-						</select>
+						<div class="customize-option">
+							<label for="customize-searchproviderselect">Search Provider</label>
+							<select id="customize-searchproviderselect">
+								<option value="https://google.com/search?q=%s">Google</option>
+								<option value="https://bing.com/search?q=%s">Bing</option>
+								<option value="https://search.yahoo.com/search?p=%s">Yahoo</option>
+								<option value="https://duckduckgo.com/?q=%s">DuckDuckGo</option>
+								<option value="">Custom</option>
+							</select>
+						</div>
 						
-						<label for="customize-customprovidertext">Custom Provider</label>
-						<input id="customize-customprovidertext" type="text" placeholder="https://google.com/search?q=%s" />
+						<div class="customize-option">
+							<label for="customize-customprovidertext">Custom Provider</label>
+							<input id="customize-customprovidertext" type="text" placeholder="https://google.com/search?q=%s" />
+						</div>
 					</div>
 					<div id="customize-icons">
-						<h1>This tab is finished. just kidding lol</h1>
+						<h1>Icons (NOT WORKING!)</h1>
 						
-						<!-- <label for="customize-iconselect">Edit</label>
-						<select id="customize-iconselect">
-							<option value="0" selected>Icon 1</option>
-							<option value="1">Icon 2</option>
-							<option value="2">Icon 3</option>
-							<option value="3">Icon 4</option>
-							<option value="4">Icon 5</option>
-							<option value="5">Icon 6</option>
-						</select>
+						<fieldset id="customize-iconselect">
+							<input type="radio" name="customize-iconselect" value="0" />
+							<input type="radio" name="customize-iconselect" value="1" />
+							<input type="radio" name="customize-iconselect" value="2" />
+							<input type="radio" name="customize-iconselect" value="3" />
+							<input type="radio" name="customize-iconselect" value="4" />
+							<input type="radio" name="customize-iconselect" value="5" />
+						</fieldset>
 						
-						<label for="customize-iconhighlightcolor">Highlight color</label>
-						<input id="customize-iconhighlightcolor" type="color" value="#ff0000" />
+						<div class="customize-option">
+							<label for="customize-iconhighlightcolor">Highlight color</label>
+							<input id="customize-iconhighlightcolor" type="color" value="#ffffff" />
+						</div>
 						
-						<label for="customize-iconsvgselect">Use icons from</label>
-						<select id="customize-iconsvgselect">
-							<option value="fa-solid.svg#%s">Font Awesome's solid icons</option>
-							<option value="fa-regular.svg#%s">Font Awesome's regular icons</option>
-							<option value="fa-brands.svg#%s">Font Awesome's brand icons</option>
-							<option value="data:image/svg+xml;utf8,%s">SVG data URLs (advanced)</option>
-						</select>
+						<div class="customize-option">
+							<label for="customize-iconsvgselect">Use icons from</label>
+							<select id="customize-iconsvgselect">
+								<option value="fa-solid.svg#%s">Font Awesome's solid icons</option>
+								<option value="fa-regular.svg#%s">Font Awesome's regular icons</option>
+								<option value="fa-brands.svg#%s">Font Awesome's brand icons</option>
+								<option value="data:image/svg+xml;utf8,%s">SVG data URLs (advanced)</option>
+							</select>
+						</div>
 						
-						<!- - TODO: put the following descriptions as placeholder text in the following box.
+						<!-- TODO: put the following descriptions as placeholder text in the following box.
 							fa-solid.svg#ICON
 							fa-regular.svg#ICON
 							fa-brands.svg#ICON
@@ -168,27 +185,30 @@
 							
 							Note to self:
 								use ELEMENT.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "fa-brands.svg#ICON"); to replace SVGs.
-							
-							Final TODO:
-							wrap each label input pair in a div with the .customize-option class?
-						- ->
-						
-						<label for="customize-iconsvgtext">Icon</label>
-						<input id="customize-iconsvgtext" type="text" placeholder="TODO: put incomplete URL here" />
+						-->
+						<div class="customize-option">
+							<label for="customize-iconsvgtext">Icon</label>
+							<input id="customize-iconsvgtext" type="text" placeholder="TODO: put incomplete URI here" />
+						</div>
 						
 						
 						<h1>Additional Information</h1>
 						
-						<p><a href="https://fontawesome.com/cheatsheet">Font Awesome icon cheatsheet</a></p> -->
+						<div class="customize-option">
+							<a href="https://fontawesome.com/cheatsheet">Font Awesome icon cheatsheet</a> <!-- awful hack -->
+						</div>
 					</div>
 					<div id="customize-advanced">
 						<h1>Reset</h1>
-						<button id="customize-resetbutton">
-							<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
-								<use xlink:href="fa-solid.svg#trash"></use>
-							</svg>
-						</button>
-						<label for="customize-resetbutton">Reset</label>
+						
+						<div class="customize-option">
+							<button id="customize-resetbutton">
+								<svg xmlns="http://www.w3.org/2000/svg" class="svg-tf">
+									<use xlink:href="fa-solid.svg#trash"></use>
+								</svg>
+							</button>
+							<label for="customize-resetbutton">Reset</label>
+						</div>
 					</div>
 					<div id="customize-about" class="on">
 						<div>

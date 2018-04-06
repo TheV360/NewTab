@@ -329,7 +329,7 @@ function resetStorage() {
 		
 		storage.setItem("setup", "true");
 		
-		storage.setItem("theme", "");
+		storage.setItem("theme", "nothing");
 		storage.setItem("images", "false");
 		
 		storage.setItem("seconds", "false");
@@ -495,16 +495,14 @@ function goSearch(event) {
 		if (special.shift || special.ctrl || special.alt) search.new = true;
 		
 		if (search.box.value.length > 0) {
-			callback = function() {
-				if (search.new) {
-					window.open(searchURL);
-				} else {
-					location.assign(searchURL);
-				}
-			};
-			
-			window.setTimeout(callback, timeToMilliseconds(time));
-			fadeOut();
+			if (search.new) {
+				window.open(searchURL);
+			} else {
+				callback = function() { location.assign(searchURL); };
+				
+				window.setTimeout(callback, timeToMilliseconds(time));
+				fadeOut();
+			}
 		}
 	} else {
 		toggleMenu();

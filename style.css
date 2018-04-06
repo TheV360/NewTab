@@ -38,6 +38,7 @@ input, button {
 	--animation: .2s;
 	--animation-customize: var(--animation);
 	--animation-customize-tabs: var(--animation);
+	--animation-customize-radio: var(--animation);
 	--animation-block-fadein: var(--animation);
 	--animation-block-fadeout: var(--animation);
 	--animation-time-blink: var(--animation);
@@ -199,6 +200,9 @@ input, button {
 }
 
 :root.nothing {
+	--fade-in: black;
+	--fade-out: white;
+	
 	--header-background: #2f2f2f00;
 	
 	--content-background: #2f2f2f3f;
@@ -250,6 +254,23 @@ a:link, a:hover, a:visited {
 input:-moz-focusring, button:-moz-focusring {
 	border: 0;
 	outline: 0;
+}
+
+input[type="radio"] {
+	display: inline-block;
+	margin: .5rem;
+	width: 1rem;
+	height: 1rem;
+	
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+}
+
+input[type="radio"]:hover {
+	margin: 0;
+	width: 2rem;
+	height: 2rem;
 }
 
 input[type="search"]::-webkit-search-cancel-button {
@@ -586,6 +607,37 @@ svg.social {
 
 #customize a:hover {
 	border-bottom: 1px solid currentcolor;
+}
+
+#customize input[type="radio"] {
+	border: 1px solid var(--button-focus);
+	
+	background-color: var(--content-background);
+	
+	transition: all var(--animation-customize-radio) ease-in-out;
+}
+
+#customize input[type="radio"]:hover {
+	background-color: var(--button-hover);
+}
+
+#customize input[type="radio"]:focus, #customize input[type="radio"]:checked {
+	background-color: var(--button-focus);
+}
+
+#customize .customize-option {
+	height: 2rem;
+	
+	line-height: 2rem;
+	font-weight: lighter;
+}
+
+fieldset {
+	margin: 0 auto;
+	padding: .5rem 0;
+	width: 100%;
+	
+	text-align: center;
 }
 
 label {
