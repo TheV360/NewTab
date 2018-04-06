@@ -258,16 +258,16 @@ input:-moz-focusring, button:-moz-focusring {
 
 input[type="radio"] {
 	display: inline-block;
-	margin: .5rem;
-	width: 1rem;
-	height: 1rem;
+	margin: .25rem;
+	width: 1.5rem;
+	height: 1.5rem;
 	
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	-ms-appearance: none;
 }
 
-input[type="radio"]:hover {
+input[type="radio"]:hover, input[type="radio"]:checked {
 	margin: 0;
 	width: 2rem;
 	height: 2rem;
