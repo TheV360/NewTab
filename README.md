@@ -1,3 +1,5 @@
+# NewTab has been discontinued. You should use [NewerTab](https://thev360.github.io/NewerTab) now.
+
 # NewTab
 [My new tab page](https://thev360.github.io/NewTab) - Not finished, but it looks cool right now!
 
